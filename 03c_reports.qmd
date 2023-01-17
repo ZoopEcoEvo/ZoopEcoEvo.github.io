@@ -1,0 +1,78 @@
+---
+title: "Project Reports"
+---
+
+Our workflow starts with plans for a project, and usually ends with a published manuscript. Between these two concrete ends points, however, is a (seemingly vast) stretch of project development. As you work through the intermediate steps, it's helpful to have something to remind yourself of the current state of the analyses, quickly share results with collaborators (who might have a range of comfort levels looking over code), write grant progress reports, etc.
+
+That's where the project report file comes in. There's a Reports directory within the Output section of the project folder. The .Rmd file found there should be used to generate the reports / summaries. This file is already formatted to do a couple useful things.
+
+First, when it's knit (using the controller script) it will output both an HTML and a markdown file. The markdown file will display nicely on the GitHub repo, providing a nice virtual format to share updated results. The HTML file won't display nicely on the GitHub, but it is an easier document to share with collaborators. In addition to some aesthetic elements that make it easier to navigate (e.g. the table of contents along the side rather than the top of the document), the HTML also includes code folding and some other helpful elements. Take the following figure, for example. You'll see a small button labeled "Code" just above it. Clicking this will reveal the code used to generate the figure. This is particularly useful when sharing code with several collaborators. Chances are, not all collaborators will care to see a project report that's been swamped by code; many would rather just see the figures and some concise text contextualizing and summarizing the results. The code folding allows you to satisfy these collaborators along with those people who might actually care to check over the code as well.
+
+```{r}
+#| fig-width: 8
+#| fig-align: center
+#| code-fold: true
+#| collapse: true
+
+library(tidyverse)
+
+mean_1 = 20
+dist_1 = rnorm(50, mean = mean_1, sd = 3)
+
+mean_2 = 25
+dist_2 = rnorm(50, mean = mean_2, sd = 3)
+
+sim_data = tibble("Condition A" = dist_1, 
+                  "Condition B" = dist_2) %>% 
+  mutate("delta" = `Condition B` - `Condition A`,
+         "dist_from_mean" = `Condition A` - mean_1)
+
+
+plot_a = sim_data %>% 
+  mutate("id" = row_number()) %>% 
+  pivot_longer(cols = c(`Condition A`, `Condition B`), 
+               values_to = "Value", 
+               names_to = "Condition") %>% 
+  mutate("Condition" = fct_relevel(`Condition`, c("Condition A", "Condition B"))) %>% 
+  ggplot(aes(x = Condition, y = Value, group = id)) + 
+  geom_line(linewidth = 0.5) + 
+  geom_point(aes(fill = Condition), shape = 21, size = 3) + 
+  scale_fill_manual(values = c("lightsteelblue3", "indianred")) + 
+  theme_bw(base_size = 16) + 
+  theme(legend.position = "none",
+        panel.grid = element_blank())
+
+plot_b = ggplot(sim_data, aes(x = dist_from_mean, y = delta)) + 
+  geom_smooth(method = "lm", colour = "black",
+              formula = 'y~x') + 
+  geom_point(size = 2, shape = 21, stroke = 1) + 
+  labs(x = "Difference from Mean",
+       y = "Trait Change") + 
+  theme_bw(base_size = 16) + 
+  theme(panel.grid = element_blank())
+
+ggpubr::ggarrange(plot_a, plot_b,
+                  labels = c("A.", "B."))
+```
+
+The other useful thing the report.Rmd file will do is automatically export image files (in .pdf and .png formats) to the Output/Figures/ directory. This makes it easier to pull up-to-date figures for presentations, progress reports, and the manuscript draft. The last use is especially important - being able to include figures in the manuscript from files instead of having to run code each time you knit the document will save you **a lot** of time.
+
+You should feel free to duplicate the report.Rmd file - making a separate report for different purposes, for example. This will allow extra flexibility with the content, format, and output. Another particularly useful 'version' of the markdown file is a digital lab notebook. You can use this modified version of the report to keep track of things you've tried. And since it's an R markdown file, you can include the snippets of code that you're working with. While Git/GitHub will provide robust version control, sometimes a visual log like this is really useful and can help you from going in circles.
+
+If you do decide to create a digital lab notebook like this, however, be sure to use unique chunk labels when plotting figures (figure names are inherited from chunk labels), otherwise you'll overwrite the figures from your other reports! You could also prevent the digital lab notebook from saving image files by changing the chunk options (see the code chunk below).
+
+```{r}
+#| code-fold: true
+#| collapse: true
+
+#These are the options set at the beginning of the report.Rmd file
+knitr::opts_chunk$set(
+  echo = knitr::is_html_output(),
+  fig.align = "center",
+  fig.path = "../Figures/markdown/", #Remove this line and...
+  dev = c("png", "pdf"), # ...this line to prevent the figures from being saved
+  message = FALSE,
+  warning = FALSE,
+  collapse = T
+)
+```

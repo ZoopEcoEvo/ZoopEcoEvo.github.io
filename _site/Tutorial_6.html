@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Project Workflow - Part 6 - Project Folders and Data Carpentry</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Project Workflow</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Intro</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./git_and_R.html">
+ <span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./coding.html" aria-current="page">
+ <span class="menu-text">Coding in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./project_dev.html">
+ <span class="menu-text">Project Development</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Part 6 - Project Folders and Data Carpentry</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding.html" class="sidebar-item-text sidebar-link">Coding in R</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tutorial_1.html" class="sidebar-item-text sidebar-link">Part 1 - R Basics</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tutorial_2.html" class="sidebar-item-text sidebar-link">Part 2 - More Data Manipulation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tutorial_3.html" class="sidebar-item-text sidebar-link">Part 3 - ggPlot and Data Visualization</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tutorial_4.html" class="sidebar-item-text sidebar-link">Part 4 - TidyVerse</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tutorial_5.html" class="sidebar-item-text sidebar-link">Part 5 - R Markdown</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tutorial_6.html" class="sidebar-item-text sidebar-link active">Part 6 - Project Folders and Data Carpentry</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_style.html" class="sidebar-item-text sidebar-link">Notes on Coding Style</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-folders" id="toc-project-folders" class="nav-link active" data-scroll-target="#project-folders">Project Folders</a>
+  <ul class="collapse">
+  <li><a href="#project-principles" id="toc-project-principles" class="nav-link" data-scroll-target="#project-principles">Project Principles</a></li>
+  <li><a href="#the-.rproj-file" id="toc-the-.rproj-file" class="nav-link" data-scroll-target="#the-.rproj-file">The .Rproj file</a></li>
+  <li><a href="#key-settings" id="toc-key-settings" class="nav-link" data-scroll-target="#key-settings">Key Settings</a></li>
+  </ul></li>
+  <li><a href="#useful-tricks" id="toc-useful-tricks" class="nav-link" data-scroll-target="#useful-tricks">Useful Tricks</a>
+  <ul class="collapse">
+  <li><a href="#splitting-scripts" id="toc-splitting-scripts" class="nav-link" data-scroll-target="#splitting-scripts">Splitting Scripts</a></li>
+  <li><a href="#dating-your-markdown" id="toc-dating-your-markdown" class="nav-link" data-scroll-target="#dating-your-markdown">Dating your markdown</a></li>
+  <li><a href="#markdown-local-version-control" id="toc-markdown-local-version-control" class="nav-link" data-scroll-target="#markdown-local-version-control">Markdown &amp; Local “Version Control”</a></li>
+  <li><a href="#project-folders-and-actual-version-control" id="toc-project-folders-and-actual-version-control" class="nav-link" data-scroll-target="#project-folders-and-actual-version-control">Project Folders and <strong>Actual</strong> Version Control</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Part 6 - Project Folders and Data Carpentry</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>By now, you’ve had some experience importing, working with, and visualizing data in R. Most applications will follow a similar workflow. At the surface, this seems straightforward, but in reality analyses often produce multiple versions of processed data, tables, and figures. Let’s quickly walk through what might be produced in a relatively simple analysis.</p>
+<p>You have a set of raw data, straight from an experiment. You import this data, and realize it needs to be cleaned up and rearranged in order for you to do the analyses you’re interested in (new file count = 1). You quickly make a summary table of the number of data points per group (file count = 2). From there, you start making figures and produce a box plot and scatter plot with regression lines (file count = 4). You need to append a table to numerically summarize the results of the linear regression (file count = 5). Finally, you produce a written summary of the experiment that can be shared with collaborators (file count = 6). After the summary is sent to your collaborators, however, someone has suggestions for ways you could improve the figures and some of the text. So you repeat the process (file count = 8, now with multiple versions of some of the files). Scale this up to a full project or manuscript, and you can see how analyses can quickly become overwhelming, and how easy it might be to lose track of files.</p>
+<p>By combining a standardized file structure with a .Rproj file, an R Project folder can help organize your analyses, and makes them easier for other people to replicate. As such, R Project Folders can also be useful when a journal requires all code and scripts to repeat analyses be made available.</p>
+<section id="project-folders" class="level1">
+<h1>Project Folders</h1>
+<p>Below is a schematic of an R Project Folder called Project_A. Contained within the project folder directory are the .RProj file, a directory for <strong>raw</strong> data, a directory for your scripts, and a directory for outputs, within which are separate directories for <strong>processed</strong> data and for figures. Other directories (for Background materials and useful papers, Presentations related to the project, or the files for the manuscript, for example) or configurations can also be useful, depending on what your project needs and how you like to handle your workflows. We’ll use this skeleton project folder organization to go over the principles of using a project folder, allowing you to more efficiently tailor this set up to your needs. An example of a “full scale” project folder arrangement is described at the end of this tuturial.<br>
+<img src="Figures/R_Project Folder Outline.png" class="img-fluid"></p>
+<section id="project-principles" class="level2">
+<h2 class="anchored" data-anchor-id="project-principles">Project Principles</h2>
+<p>The main principle for a project folder is that your workflow is <strong>one-directional</strong>. Raw data is processed by scripts and saved in the Output / Data directory. This processed data is used to generate figures, which are stored in the Output / Figures directory. These figures are then used in reports, manuscripts, and presentations. Note that at no time is the raw data overwritten. <strong>This is absolutely essential</strong>.</p>
+</section>
+<section id="the-.rproj-file" class="level2">
+<h2 class="anchored" data-anchor-id="the-.rproj-file">The .Rproj file</h2>
+<p>The inclusion of the .Rproj file in the home directory is essential for the functioning of an R Project Folder. The .Rproj file serves two main purposes, to ensure general settings are correct, and to act as an ‘anchor’ for your analyses. This file anchors the folder by setting all file paths relative to the project folder (meaning that file paths will be always be correct, even when the folder is shared with someone else). You’ll notice that you rarely (if ever) will have to check or set the working directory when using a project folder. In order for RStudio to “know” you’re working in a specific project, the <strong>first</strong> thing you will need to do when starting your session is open the .Rproj file, which should start a new RStudio session. You will know the project is active when you see the project name in the top right corner of RStudio.</p>
+</section>
+<section id="key-settings" class="level2">
+<h2 class="anchored" data-anchor-id="key-settings">Key Settings</h2>
+<p>As the goal of an R Project Folder is to help, there are several default settings in R that you will want to change. These setting changes are one of the components organized by the .Rproj file.</p>
+<ol type="1">
+<li>Never save .Rdata when closing your session. Open up your Preferences &gt; General, and make sure “Restore .Rdata into workspace at startup” is <strong>not</strong> checked. This will ensure that variables and other objects from your Environment are not carried over from one session to the next. Also ensure that “Save workspace to .Rdata on exit” is set to “Never”.</li>
+<li>In Preferences &gt; R Markdown, make sure that “Evaluate chunks in directory” is set to “Project”. This will make it easier to navigate through the component folders when setting file paths.</li>
+<li>In the drop-down menu next to the “Knit” button, ensure that “Knit directory” is set to “Project”.</li>
+</ol>
+</section>
+</section>
+<section id="useful-tricks" class="level1">
+<h1>Useful Tricks</h1>
+<section id="splitting-scripts" class="level2">
+<h2 class="anchored" data-anchor-id="splitting-scripts">Splitting Scripts</h2>
+</section>
+<section id="dating-your-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="dating-your-markdown">Dating your markdown</h2>
+<p>Often, you may want to put the current date onto the output of your markdown rather than use a fixed date. To do this, put a “date” object in your YAML (typically after the title and author lines), and then specify “r Sys.Date()”. This is technically in-line r code, so be sure to replace the ” with `.</p>
+</section>
+<section id="markdown-local-version-control" class="level2">
+<h2 class="anchored" data-anchor-id="markdown-local-version-control">Markdown &amp; Local “Version Control”</h2>
+</section>
+<section id="project-folders-and-actual-version-control" class="level2">
+<h2 class="anchored" data-anchor-id="project-folders-and-actual-version-control">Project Folders and <strong>Actual</strong> Version Control</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

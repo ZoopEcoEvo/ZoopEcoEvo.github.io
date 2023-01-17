@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Project Workflow - Part 1 - R Basics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Project Workflow</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./00_index.html">
+ <span class="menu-text">Intro</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./01_git_and_R.html">
+ <span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./02_coding.html" aria-current="page">
+ <span class="menu-text">Coding in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./03_project_dev.html">
+ <span class="menu-text">Project Development</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Part 1 - R Basics</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_coding.html" class="sidebar-item-text sidebar-link">Coding in R</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02a_Tutorial_1.html" class="sidebar-item-text sidebar-link active">Part 1 - R Basics</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02b_Tutorial_2.html" class="sidebar-item-text sidebar-link">Part 2 - More Data Manipulation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02c_Tutorial_3.html" class="sidebar-item-text sidebar-link">Part 3 - ggPlot and Data Visualization</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02d_Tutorial_4.html" class="sidebar-item-text sidebar-link">Part 4 - TidyVerse</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02e_Tutorial_5.html" class="sidebar-item-text sidebar-link">Part 5 - R Markdown</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02f_code_style.html" class="sidebar-item-text sidebar-link">Notes on Coding Style</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-the-r-environment-syntax" id="toc-introduction-to-the-r-environment-syntax" class="nav-link active" data-scroll-target="#introduction-to-the-r-environment-syntax">Introduction to the R Environment &amp; Syntax</a>
+  <ul class="collapse">
+  <li><a href="#the-r-studio-workspace" id="toc-the-r-studio-workspace" class="nav-link" data-scroll-target="#the-r-studio-workspace">The R Studio Workspace</a></li>
+  <li><a href="#basics-of-r-syntax---here-be-dragons" id="toc-basics-of-r-syntax---here-be-dragons" class="nav-link" data-scroll-target="#basics-of-r-syntax---here-be-dragons">Basics of R syntax - Here be dRagons</a></li>
+  <li><a href="#golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them" id="toc-golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them" class="nav-link" data-scroll-target="#golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them">Golden Rule of R - Do unto yourself as others would have you do unto them</a></li>
+  </ul></li>
+  <li><a href="#basics-of-data-manipulation" id="toc-basics-of-data-manipulation" class="nav-link" data-scroll-target="#basics-of-data-manipulation">Basics of Data Manipulation</a>
+  <ul class="collapse">
+  <li><a href="#variable-assignment" id="toc-variable-assignment" class="nav-link" data-scroll-target="#variable-assignment">Variable Assignment</a></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a>
+  <ul class="collapse">
+  <li><a href="#seq-and-rep" id="toc-seq-and-rep" class="nav-link" data-scroll-target="#seq-and-rep">seq() and rep()</a></li>
+  <li><a href="#vector-arithmetic" id="toc-vector-arithmetic" class="nav-link" data-scroll-target="#vector-arithmetic">Vector Arithmetic</a></li>
+  <li><a href="#summarizing-vectors" id="toc-summarizing-vectors" class="nav-link" data-scroll-target="#summarizing-vectors">Summarizing Vectors</a></li>
+  <li><a href="#challenge-can-you-use-sort-to-arrange-a-vector-from-largest-to-smallest-instead" id="toc-challenge-can-you-use-sort-to-arrange-a-vector-from-largest-to-smallest-instead" class="nav-link" data-scroll-target="#challenge-can-you-use-sort-to-arrange-a-vector-from-largest-to-smallest-instead">Challenge: Can you use sort() to arrange a vector from largest to smallest instead?</a></li>
+  </ul></li>
+  <li><a href="#data-classes" id="toc-data-classes" class="nav-link" data-scroll-target="#data-classes">Data Classes</a>
+  <ul class="collapse">
+  <li><a href="#integers-numerics-and-characters" id="toc-integers-numerics-and-characters" class="nav-link" data-scroll-target="#integers-numerics-and-characters">Integers, Numerics, and Characters</a></li>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
+  <li><a href="#logical-data" id="toc-logical-data" class="nav-link" data-scroll-target="#logical-data">Logical Data</a></li>
+  <li><a href="#combining-data-classes" id="toc-combining-data-classes" class="nav-link" data-scroll-target="#combining-data-classes">Combining Data Classes</a></li>
+  </ul></li>
+  <li><a href="#creating-data-objects" id="toc-creating-data-objects" class="nav-link" data-scroll-target="#creating-data-objects">Creating Data Objects</a></li>
+  <li><a href="#multi-dimensional-data-structures" id="toc-multi-dimensional-data-structures" class="nav-link" data-scroll-target="#multi-dimensional-data-structures">Multi-Dimensional Data Structures</a></li>
+  <li><a href="#subsetting-data-structures" id="toc-subsetting-data-structures" class="nav-link" data-scroll-target="#subsetting-data-structures">Subsetting Data Structures</a>
+  <ul class="collapse">
+  <li><a href="#positional-subsetting" id="toc-positional-subsetting" class="nav-link" data-scroll-target="#positional-subsetting">Positional Subsetting</a></li>
+  <li><a href="#logical-subsetting" id="toc-logical-subsetting" class="nav-link" data-scroll-target="#logical-subsetting">Logical Subsetting</a></li>
+  <li><a href="#subsetting-dataframes" id="toc-subsetting-dataframes" class="nav-link" data-scroll-target="#subsetting-dataframes">Subsetting Dataframes</a></li>
+  </ul></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Part 1 - R Basics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-the-r-environment-syntax" class="level1">
+<h1>Introduction to the R Environment &amp; Syntax</h1>
+<p>This first section will introduce the basic elements and components of R Studio, as well as begin to shape your understanding of R syntax and how it can be used to examine and manipulate data.</p>
+<p>R is a coding language. Technically you can do everything you need in the terminal window. However, this is not only challenging, but can limit the scope of what’s possible with R. R Studio is a graphical user interface (GUI) that allows you to simultaneously write R scripts, keep track of variables and data objects you’ve created, and visualize your data. It also has a built in support structure, complete with help pages and tutorials.</p>
+<p>R can be downloaded <a href="https://cloud.r-project.org"><strong>here</strong></a>.<br>
+R Studio can be downloaded <a href="https://rstudio.com/products/rstudio/"><strong>here</strong></a>. Download the open-source Desktop version.</p>
+<p>You will need both installed before continuing with these activities. This tutorial will provide both examples of lines of code and their output, as well as prompts for you to write code yourself. It will be helpful to “code along” and replicate all of the provided examples as we go.</p>
+<section id="the-r-studio-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="the-r-studio-workspace">The R Studio Workspace</h2>
+<p><img src="Figures/studio_window.png" class="img-fluid"></p>
+<p>An R Studio window has four major components. The Console window, in the lower left quadrant, is used for the direct input of commands. This is a direct link to your computer and R functionality. It can be used for testing code or running quick calculations. It’s also useful for examining the contents of data structures. It’s not very efficient for creating and storing variables and commands though. For this, we will rely on a document called a ‘script’ (shown here in the top left quadrant) Make sure you have a new script open as we move through these exercises (you can create a blank script using the ‘new file’ icon in the top left corner of R Studio). The ability to open, edit, and run R scripts in R Studio is one of the biggest advantages of using the GUI. These scripts are used to write and record commands, providing a written record of everything you do to get from raw data to final product. This in turn makes your analyses easier to repeat. Functional and logical R scripts are an important component of many open science ventures.</p>
+<p>The R Studio environment also provides easy access to other important details. The Files, Plots, Packages, and the Help windows share a space in R Studio (lower right quadrant). The Files window shows you the files in your working directory, and can be used to access data. The Plots window is where graphical outputs will show up. The range of things you can do with R is greatly expanded by packages (essentially, your R toolbox). These contain functions for diverse applications, and can be used to customize your R experience. The Packages window shows which packages have been installed, and which are currently active. This area can also be used to find and install new packages. We will install several important packages later on. The Help window is relatively self-explanatory. Functions and packages come with documentation, which can be accessed via the Help window. You can use the search bar in that window, or simply type ‘?function_name()’ into the console.</p>
+<p>The final area of an R Studio workspace contains the Environment and History windows. Your Environment window will show you all of the variables and data objects you’ve generated. The History window records all of your actions. This can be useful if you want to trace your steps backwards through an analysis to confirm what you did or identify an issue.</p>
+<p>The arrangement of these windows and general appearance of the GUI is customizable in Preferences/Settings.</p>
+</section>
+<section id="basics-of-r-syntax---here-be-dragons" class="level2">
+<h2 class="anchored" data-anchor-id="basics-of-r-syntax---here-be-dragons">Basics of R syntax - Here be dRagons</h2>
+<p>Your interaction with R is based on commands. Remember, R is a computer language. Despite all efforts to make it as user friendly as possible, it can neither fully anticipate your needs nor infer your intentions. Correct syntax and usage of commands is therefore of utmost importance (and where 99% of the frustration with coding will lie).</p>
+<p>R recognizes three types of commands. Elementary commands are fairly intuitive. These include things like basic mathematical expressions and variable assignment. Remember, commands can be input into either the Console or the R script. Commands in the Console will run automatically after hitting the ‘enter’/‘return’ key. There are several ways to run a command contained in a script. The “Run” button in the top right section of the script window will run the current line or all lines selected. The “Source” button will run the entire script. There are also system-specific keyboard shortcuts to run a line of code; ‘command + return’ on a Mac, for example. It will be helpful to find the shortcut for whichever system you’re using. After running code in the script window, results will show up in the console window. Practice entering and running the following elementary commands in both windows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span>  </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>  </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span> <span class="sc">*</span> <span class="dv">2</span>  </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that input of an expression without assignment (using an ‘=’) prints the result in the console window, but does not store the value (you can see what you’ve stored in the Environment window). In order to store values, you need to assign them to a variable. A variable can be single characters (ex - A, B, X, Y) or strings of characters (ex - key_values, LD50, data.set). Variable names cannot, however, start with a number. We’ll go over assignment to variables in greater detail in a later section, but for now try assigning a few variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>variable <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(variable)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variable <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(variable)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note: In the above examples, we use print() to see the content of a variable. You can also see what a variable just by running the variable by itself, but it’s a good idea to use a command like print() so you know that you didn’t lose any code from that line.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(variable)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Prints the same thing</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>variable </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The real power of R is in the use of function commands. Functions tell R to do a series of operations, which can include other mathematical functions (find the mean, the standard deviation, etc.), or more complex actions (estimate linear regressions, make plots, etc.). These functions follow a basic syntax of FUNCTION(parameters and values).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">9</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6.285714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Remember, R cannot ‘infer’ the end of incomplete commands. R can tell you when it thinks a command is incomplete though; incorrect syntax will return an error or will return a line that starts with + rather than &gt; in the console window. For example, try running the previous line of code without the last parenthesis. You can ‘complete’ the line of code by entering the missing closing parenthesis in the Console window. ‘Control + c’ can also be used to abort an incomplete command.</p>
+</section>
+<section id="golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them" class="level2">
+<h2 class="anchored" data-anchor-id="golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them">Golden Rule of R - Do unto yourself as others would have you do unto them</h2>
+<p>As we move through these workshop sessions, there is one key thing to keep in mind. This what we’ll call the Golden Rule of R: <strong>Be kind to yourself</strong>. Developing good habits early on is critical!</p>
+<p>Obviously the longer you use R, the more functions you’ll come across (the collector’s curve will never saturate). Keep track of particularly important or useful commands. It can be helpful to maintain a separate document with these commands and what they do (think of this as a personalized diction-R-y). This is something you can refer back to often, rather than needing to search through large volumes of old scripts for a specific line of code. This can be tedious, and depends a lot on personal preference. You might want to keep track of just the functions that give you trouble, or that you can’t ever seem to remember. You will develop a sense of what is most useful for you as you spend more time coding.</p>
+<p>A comprehensive repository is less useful for variables, as even relatively simple processes in R can generate dozens of them. Keeping track of all of them in one place would be tiresome and inefficient. You still need to keep track of what you’re creating (and why) though. There are two good habits that will help with this. First, develop a standard naming structure for your variables. Names should be both concise and descriptive. For instance, imagine you’re creating a model describing the relationship between X and Y, and want to store the model as a variable. Assigning it to a variable called ‘model_describing_the_relationship_between_X_and_Y’ is fairly descriptive, but way too long. A variable called ‘model’ is short, but not descriptive. Variables like ‘X_Y.model’ are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use ‘X_Y.model’ in one script, use ‘A_B.model’ rather than ‘AB_model’ for the next model. These stylistic conventions are usually based on personal preference, and should be something you include in your dictionary.</p>
+<p>It’s also important that variable names be relatively unique: You want to avoid using the same variable name across many different scripts. For example, using a variable called “data” to store your data in all of your scripts is an easy way to get your analyses tangled up, especially if you’re jumping between different R scripts in the same session. <strong>Assigned variables are not stored in your script</strong>. So, if you assign something to ‘X_data’ in one script, it will carry that over into any other script you open during that session. Likewise, if you re-assign ‘X_data’ in the second script and then go back to the first script, ‘X_data’ won’t change back.</p>
+<p>Finally, remember that R is case sensitive; ‘Variable’ is not the same thing as ‘variable’ in R. Despite the scientific convention (e.g.&nbsp;- The ‘t’ vs.&nbsp;‘T’ variables for time and temperature), it’s usually not a good idea to differentiate variables based soley on capitalization. Remember that the goal is to be both concise and descriptive - name your variables ‘time’ and ‘temp’, not ‘t’ and ‘T’.</p>
+<p>The second (and more important) helpful habit is to comment on everything! While a separate document for important code/variables can be useful for general R purposes, it will not help you remember the purpose, organization, or workflow of an individual script. For this, we rely on in-script annotation. Characters following a # are not executed by R. These are called comments, and are absolutely essential for long-term success in R. You should be able to open up an R script and know exactly what every line is supposed to do. Get into the habit of commenting on your scripts. Comment such that someone completely unfamiliar with your script could open it and know exactly what’s happening in every line. Do not fall into the classic trap of thinking “this is an easy step, I’ll totally remember what it’s doing” because it’s not and you won’t.</p>
+<p>Developing your own individual coding style is part of learning R, and will most likely help make it more intuitive and enjoyable. However, it will save you a lot of time and energy (and tears) if you make sure that your individual style is built on a foundation of good habits. Name data objects in consistent ways. Capitalize names in a consistent way within and across all your scripts. Use the same indentation strategies. Comment on everything. Developing smart coding habits early on is much easier than trying to break bad habits later.</p>
+<p>Note: Many analyses require coordination between multiple R scripts. It might also just make more sense to break a long script into multiple shorter scripts. Keeping collections of R scripts organized and functional is best accomplished using something called an R Project. We will cover these later, but you can find some information on their uses and structuring <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects"><strong>here</strong></a> and <a href="https://nicercode.github.io/blog/2013-04-05-projects/"><strong>here</strong></a> if you’re interested.</p>
+</section>
+</section>
+<section id="basics-of-data-manipulation" class="level1">
+<h1>Basics of Data Manipulation</h1>
+<p>R’s main functionality is the manipulation of data. But before we can get into processing and analyzing data, we need to go over how data is structured in the R environment. Different types of data objects have their own set of unique properties, characteristics, and structures which are fundamental to their manipulation in R. Herein lies a major source of frustration for novice (and experienced) R users.</p>
+<section id="variable-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="variable-assignment">Variable Assignment</h2>
+<p>We’ve already mentioned that assignment to variables stores information in R. This is true for any of the data structures we’ll talk about. You can assign information in two main ways, with ‘=’ or with ‘&lt;-’. In general, these are equivalent methods of assignment. Try assigning a variable using both methods.</p>
+<p>Note that ‘x -&gt; 1’ is not the same thing as ‘x &lt;- 1’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">-&gt;</span> <span class="dv">3</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in 3 &lt;- z: invalid (do_set) left-hand side to assignment</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in print(z): object 'z' not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Variables can be used to store more than just numbers though. Variables can store a wide-variety of data objects. This includes characters (or strings of characters). It’s important to use quotation marks when assigning characters to a variable (this prevents the assignment of previously assigned numerical values on accident). Remember, R cannot infer your intentions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> x</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(beta)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="st">"x"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alpha)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "x"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vectors" class="level2">
+<h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
+<p>Vectors are ordered collections of either numbers or characters. These are one dimensional data structures, meaning their structure is defined by a length; every value occupies a specific position in the vector. Position 1 is the first value, position 2 is the second, etc. etc.</p>
+<p>Vectors can be created manually using the concatenate function, c(). This works for both individual values, character strings, and even other vectors. This function essentially binds objects together in a specific order. You can mix-and-match values and variables when concatenating.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Notice that we have now overwritten the original values assigned to x and y</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">c</span>(y,x)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Notice that the order in which values were assigned depends on both</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#the order of the vectors and the order of values within the vectors</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="st">"red fish"</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="st">"blue fish"</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>pond <span class="ot">=</span> <span class="fu">c</span>(A, B, <span class="st">"one fish"</span>, <span class="st">"two fish"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pond)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "red fish"  "blue fish" "one fish"  "two fish"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The concatenate function is a simple way to create short vectors, but longer objects can be tedious to input in this manner. There are more efficient ways to create vectors if you’d like them to contain simple sequences or patterns of numbers.</p>
+<p>For instance, you can create a vector with all integers between two numbers by putting a ‘:’ between them. Note that order matters.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>forward <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>reverse <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(forward)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(reverse)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 10  9  8  7  6  5  4  3  2  1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is the equivalent of: c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) or c(10, 9, 8, 7, 6, 5, 4, 3, 2, 1), but requires a fraction of the number of keystrokes.</p>
+<section id="seq-and-rep" class="level3">
+<h3 class="anchored" data-anchor-id="seq-and-rep">seq() and rep()</h3>
+<p>The functions seq() and rep() can generate more complex patterns. The seq() function can be used to define a sequence of values based on the desired start and stop values, as well as the interval between values. Note that if a different interval size is not specified, the function defaults to a value of 1, and this command produces the same thing as you’d get by using a ‘:’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sequence <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">3</span>, <span class="at">to =</span> <span class="dv">15</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sequence)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  4  5  6  7  8  9 10 11 12 13 14 15</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>new_sequence <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">by =</span> <span class="dv">3</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(new_sequence)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0  3  6  9 12 15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you’d like to build a vector based on the repetition of values, rep() can be used. The vector is formed based on an input (specified as ‘x’) and a desired number of times to repeat that input.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>repetition <span class="ot">=</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">7</span>, <span class="at">times =</span> <span class="dv">8</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(repetition)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 7 7 7 7 7 7 7 7</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>rep <span class="ot">=</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="st">"rep"</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(rep)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] "rep" "rep" "rep" "rep" "rep" "rep" "rep" "rep" "rep" "rep"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>x_rep <span class="ot">=</span> <span class="fu">rep</span>(<span class="at">x =</span> x, <span class="at">times =</span> <span class="dv">4</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x_rep)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 2 3 1 2 3 1 2 3 1 2 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Another useful parameter for the rep() function is “each”, which tells R how many times to repeat each value <strong>within</strong> the repetition. By manipulating ‘times’ and ‘each’, you can create vectors which would otherwise take a lot of time to assemble manually.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>new_rep <span class="ot">=</span> <span class="fu">rep</span>(z, <span class="at">times =</span> <span class="dv">4</span>, <span class="at">each =</span> <span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(new_rep)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6 1 2 3</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>single_rep <span class="ot">=</span> <span class="fu">rep</span>(z, <span class="at">times =</span> <span class="dv">1</span>, <span class="at">each =</span> <span class="dv">4</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(single_rep)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 4 4 4 4 5 5 5 5 6 6 6 6 1 1 1 1 2 2 2 2 3 3 3 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vector-arithmetic" class="level3">
+<h3 class="anchored" data-anchor-id="vector-arithmetic">Vector Arithmetic</h3>
+<p>One of the other useful vector characteristics is that once you’ve generated a vector, it can easily be used in arithmetic and mathematical functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>z <span class="sc">+</span> z </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  8 10 12  2  4  6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice how the vectors were added together. <strong>Vector expressions are site specific</strong>: z1 + z1, z2 + z2, etc. However, if the vector lengths don’t match, the shorter vector gets recycled.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>z <span class="sc">+</span> m</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5 7 7 2 4 4</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>z <span class="sc">+</span> <span class="dv">6</span> <span class="co">#Essentially a vector of length 1</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10 11 12  7  8  9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summarizing-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="summarizing-vectors">Summarizing Vectors</h3>
+<p>Vectors are commonly used to store numerical measurements or sample data. It’s therefore useful to be able to summarize them in various ways. There are many functions to do this with, most of which are fairly intuitive. For example, asking for the max() of a vector will return the maximum value contained in the vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(z)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Other common summary functions are min(), mean(), and median(). It is often also useful to find the length of a vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(z)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(m)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 1</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(m)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Other functions output more complex results. The range() function returns two numbers at the same time, the maximum and the minimum values. This presents a new challenge. If you wanted to use these numbers for further analysis, you will need to be able to isolate them or specify which you want to use. This is where understanding the structure of the data object becomes important.</p>
+<p>Assign the range of ‘z’ to a variable. Print that variable. What do you see? Using str() will return a compact summary of the structure of an object. Use str() to examine both z and your new variable. Don’t forget that your variable name should be both concise and informative!</p>
+<p>Both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using ‘[ ]’, and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Print the second position in vector z</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z[<span class="dv">2</span>])</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Remember how we can specify sequences of numbers using ':'</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5 6 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s your first multi-step problem: Assign just the maximum value of ‘z’ to a new variable by subsetting the range variable you previously created. Things to keep in mind: Are your variable names short but informative? Have you been commenting on your script? What would be a more efficient way of doing this?</p>
+<p>The functions we’ve dealt with so far work with ordered (ex - vectors that are arranged from smallest to largest) and non-ordered vectors. However, some functions or manipulations require that vector inputs are ordered. This can be accomplished using the function sort(). This function will re-arrange values within a vector from smallest to largest. How could you use sort() and length() to find the maximum value of a vector? As you can see, for any analysis in R, there can be many potential solutions. For the simple question “what is the maximum value contained in vector z”, for example, we’ve already covered three possible solutions of varying complexity. The best solution will often be context-specific, but ultimately, if your solution works, it is a correct solution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(z)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="challenge-can-you-use-sort-to-arrange-a-vector-from-largest-to-smallest-instead" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-can-you-use-sort-to-arrange-a-vector-from-largest-to-smallest-instead">Challenge: Can you use sort() to arrange a vector from largest to smallest instead?</h3>
+<p>There are several ways to do this. Be creative!</p>
+</section>
+</section>
+<section id="data-classes" class="level2">
+<h2 class="anchored" data-anchor-id="data-classes">Data Classes</h2>
+<p>Up to this point we’ve mostly dealt with data comprised of numbers or characters. R handles several different types of data though, which is why it’s such a powerful tool.</p>
+<section id="integers-numerics-and-characters" class="level3">
+<h3 class="anchored" data-anchor-id="integers-numerics-and-characters">Integers, Numerics, and Characters</h3>
+<p>Integer and Numeric data are both comprised of number values. Integers cannot have decimals while numerics can.</p>
+<p>Character data is non-numeric. Letters or words are (usually) automatically stored as character data. Numbers can also be stored as characters too, but will lose their numeric properties.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>num <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">22</span>, <span class="dv">30</span>, <span class="dv">38</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>num <span class="sc">+</span> num</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 28 44 60 76</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>char <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"14"</span>, <span class="st">"22"</span>, <span class="st">"30"</span>, <span class="st">"38"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>char <span class="sc">+</span> char</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in char + char: non-numeric argument to binary operator</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="factors" class="level3">
+<h3 class="anchored" data-anchor-id="factors">Factors</h3>
+<p>Factors identify discrete classifications (i.e.&nbsp;- categorical variables), and tells R it’s dealing with unique groups of data. The different groups of factors are called ‘levels’. These levels don’t have inherent meaning, other than to delineate data into groups. Factors can be identified by numbers or character data. Remember though, when a number is classified as a factor, it loses its numerical characteristics (you can’t add factors together, for example). We will talk about factors when we cover more complex analyses and data visualization, but common examples include experimental groups (control vs.&nbsp;treatment), descriptive characteristics (colour, population of origin, etc.), and other similar grouping information.</p>
+</section>
+<section id="logical-data" class="level3">
+<h3 class="anchored" data-anchor-id="logical-data">Logical Data</h3>
+<p>Logical data is a little different, and characterizes values based on whether they satisfy some logical statement. Logical data is therefore reported as True/False. There is a specific R syntax to define these statements. ‘==’ is used to indicate an exact equality is required. <strong>This is not the same as ‘=’</strong>. An exact equality is read as “is exactly equal to”. Looking for values that are not equal to a given value is accomplished with ‘!=’, the syntax for an inequality (AKA “is not equal to”). These logical statements can be evaluated for single values or for vectors. Pay particular attention to the output of using a logical evaluator on a vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Evaluates the statement "value is exactly equal to 3"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>value <span class="sc">==</span> <span class="dv">3</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>z <span class="sc">==</span> <span class="dv">4</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE FALSE FALSE FALSE FALSE FALSE</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Evaluates the statement "which positions in vector z are not equal to 3"</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>z <span class="sc">!=</span> <span class="dv">3</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Other common logical statements are ‘&lt;’ (“less than but not equal to”); ‘&gt;’ (“greater than but not equal to”); ‘&lt;=’ (“less than or equal to”); and ‘&gt;=’ (“greater than or equal to”). Remember that’&lt;-’ is used to assign values, whereas ‘&lt;=’ is used to evaluate logical statements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(value)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>value <span class="sc">&gt;</span> <span class="dv">3</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>z <span class="sc">&gt;=</span> <span class="dv">2</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Evaluating logical statements becomes increasingly important when dealing with large data sets. There are several other logical evaluators or modifiers that we will examine when we cover subsetting data in more detail.</p>
+<p>Missing values may be common in data sets, and constitute their own form of logical data. These can be represented in R using NA, which stands for ‘Not Available’.</p>
+<p>TRUE, FALSE, NA, and a few other values are exceptions to the rule that characters need to be input surrounded by quotation marks, since they’re interpretted as logical data, not character data. These characters are so fundamental to the operation of R that it recognizes them without quotation marks (remember this when assigning variable names!). In some cases, R also will recognize abbreviations of these values. Test this by assigning “T” and T to a variable and printing the variables.</p>
+</section>
+<section id="combining-data-classes" class="level3">
+<h3 class="anchored" data-anchor-id="combining-data-classes">Combining Data Classes</h3>
+<p>Using the function class() is a simple method to determine what type of data an object contains. Check the type of data contained in ‘z’. What type of data is contained within the variable ‘pond’, which you assigned early on in this tutorial. One important thing to note, vectors can only contain one type of data. You cannot use a vector to store both numeric data and character data, for example. It will change all values to characters if you try to do this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>combo <span class="ot">=</span> <span class="fu">c</span>(z, pond)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(combo)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] "4"         "5"         "6"         "1"         "2"         "3"        </span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] "red fish"  "blue fish" "one fish"  "two fish"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(combo)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The exception to this rule is when a vector contains ‘NA’ (and certain other logical values), in which case the vector retains the class of the non-missing values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>missing_z <span class="ot">=</span> z</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Replaces the 4th position of missing_z with NA</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>missing_z[<span class="dv">4</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(missing_z)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  4  5  6 NA  2  3</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(missing_z)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "numeric"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The exception to this exception is when TRUE and FALSE are included alongside numeric data. In that case, the logical values are converted to binary data (1 = TRUE, 0 = FALSE), rather than maintained as logical data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>false_z <span class="ot">=</span> z</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(false_z)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>false_z[<span class="dv">2</span>] <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(false_z)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 0 6 1 2 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sometimes it’s necessary to modify the class of data values. This is known as coercion. The functions as.character(), as.numeric(), as.integer(), and as.factor() are commonly used to force data into character, numeric, integer, and factor classes, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>z.char <span class="ot">=</span> <span class="fu">as.character</span>(z)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z.char)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "4" "5" "6" "1" "2" "3"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>z.int <span class="ot">=</span> <span class="fu">as.integer</span>(z.char)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z.int)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="creating-data-objects" class="level2">
+<h2 class="anchored" data-anchor-id="creating-data-objects">Creating Data Objects</h2>
+<p>One of the most critical requirements towards R literacy is the ability to generate data structures. Empty vectors can be created for numeric/integer and character data using numeric() and character(), respectively. An empty vector for data classified as logical is created with vector(). Empty vectors can be assigned any type of data though, which will often override the original data class. We will talk about an important exception below. Remember, objects you create are not stored unless they are assigned to a variable!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fu">numeric</span>()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">=</span> <span class="fu">character</span>()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>V <span class="ot">=</span> <span class="fu">vector</span>()</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(N)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "numeric"</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(C)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(V)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "logical"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s see what happens when you try to assign a character to a position in a numeric vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(N)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "numeric"</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>N[<span class="dv">3</span>] <span class="ot">=</span> <span class="st">"character"</span> <span class="co">#this specifies that the third position in the </span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                   <span class="co">#vector N is equal to the character string “character”. </span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(N)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice how the original class for N has changed to match the class of what was added. If we add a numeric value to N now what will happen?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>N[<span class="dv">6</span>] <span class="ot">=</span> <span class="dv">15</span> <span class="co">#this specifies that the sixth position in the vector N is equal </span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          <span class="co">#to the number 15. </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(N)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Even though we added a number to vector N, because it already contains a character string, and is a character-classed vector, R automatically converts the numeric input to a character. This illustrates the important exception mentioned before: Vectors classed as character data coerce any input to character data. This is a common issue when working with experimental data - units or unrecognized NA filler variables can often force data from numeric to character class. This is also applies to empty character vectors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(C)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>C[<span class="dv">3</span>] <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(C)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NA  NA  "4"</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(C)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>C[<span class="dv">5</span>] <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(C)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NA     NA     "4"    NA     "TRUE"</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(C)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="multi-dimensional-data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="multi-dimensional-data-structures">Multi-Dimensional Data Structures</h2>
+<p>Like vectors (one-dimensional structures defined by a length), the other common data structures can be defined by different numbers of dimensions. A matrix is a two-dimensional object (defined by a length and a width, aka some number of rows and columns). An array is an n-dimensional object. For example, a three-dimensional array is commonly thought of as a cube, defined by some number of rows and columns replicated across some number of sheets.</p>
+<p>When creating an matrix or array, you need to specify the dimensions. Matrices are formed using the function matrix(nrow = X, ncol = Y). Arrays follow a slightly different format: array(dim = c(rows, columns, sheets)).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mat)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3]</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   NA   NA   NA</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   NA   NA   NA</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]   NA   NA   NA</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]   NA   NA   NA</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]   NA   NA   NA</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>arr <span class="ot">=</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(arr)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="do">## , , 1</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   NA   NA   NA   NA</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   NA   NA   NA   NA</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]   NA   NA   NA   NA</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="do">## , , 2</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   NA   NA   NA   NA</span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   NA   NA   NA   NA</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]   NA   NA   NA   NA</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a><span class="do">## , , 3</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   NA   NA   NA   NA</span></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   NA   NA   NA   NA</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]   NA   NA   NA   NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Data frames are matrix-like data structures, in that they’re two-dimensional. The key difference is that matrices are restricted to one class of data, while data frames can contain columns of different data classes. Data frames are therefore extremely useful as an intuitive way to record results of experiments and are the most common data structure we’ll work with. While a data frame can contain columns with different classes of data, all columns must be of the same length within the data frame, and data class can’t vary within a column (again, with the exceptions outlined above).</p>
+<p>Matrices can easily be converted into data frames using the as.data.frame() function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mat)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3]</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]   NA   NA   NA</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   NA   NA   NA</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]   NA   NA   NA</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]   NA   NA   NA</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]   NA   NA   NA</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">as.data.frame</span>(mat)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 NA NA NA</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 NA NA NA</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 NA NA NA</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 NA NA NA</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 NA NA NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that the column names change as the structure is converted from matrix to data frame. The row numbers also change slightly in their format. There are other differences between matrices and data frames that we won’t cover yet.</p>
+</section>
+<section id="subsetting-data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-data-structures">Subsetting Data Structures</h2>
+<p>Now that we’ve covered common data structures, it’s time to re-visit subsetting. Data sets can be quite large in R, and being able to efficiently and accurately pull out particular records or observations is critical for many analyses. Since data sets are rarely sorted in a way to makes this easily accomplished manually, you will have to rely on subsetting. The syntax of subsetting can be tricky to wrap your head around, but just keep the <strong>structure</strong> of the data in mind.</p>
+<section id="positional-subsetting" class="level3">
+<h3 class="anchored" data-anchor-id="positional-subsetting">Positional Subsetting</h3>
+<p>We already worked with subsetting vectors. These one-dimensional structures are subset by specifying the specific position of values you want. Matrices and data frames can be subset in a similar way, but now you’re dealing with two-dimensional structures. You need to specify both a row and a column (in that order) to locate a specific value, again using [] to contain this position information.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This time we add a little data when we create the matrix</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>dat_matrix <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">8</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">8</span><span class="sc">*</span><span class="dv">4</span>))</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>dat_matrix[<span class="dv">7</span>,<span class="dv">3</span>] <span class="co">#Pulls out the value in row 7, column 3</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Positional subsetting can also use more complex information to locate data. For example, let’s say you wanted every other value from the third column. There are several ways to do this, other than manually inputting the numeric position of each number.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Approach 1 - Using c()</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>c_positions <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>) <span class="co">#Manually input positions into a vector</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(c_positions)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 3 5 7</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>dat_matrix[c_positions, <span class="dv">3</span>] <span class="co">#Use the vector to specify rows you want from column 3</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17 19 21 23</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Approach 2 - Using seq()</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>seq_positions <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(seq_positions)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 3 5 7</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>dat_matrix[seq_positions, <span class="dv">3</span>]</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17 19 21 23</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Approach 3 - Using vector arithmetic</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>arith_positions <span class="ot">=</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">8</span><span class="sc">/</span><span class="dv">2</span>)) <span class="sc">-</span> <span class="dv">1</span> </span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="co">#Starts off with a vector that is half as long as the column, </span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a><span class="co">#multiplies those numbers by two, then subtracts one</span></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(arith_positions)</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 3 5 7</span></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>dat_matrix[arith_positions, <span class="dv">3</span>]</span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17 19 21 23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Obviously, some approaches are more intuitive than others. But different situations may require different things, so it’s a good idea to keep an open mind.</p>
+<p>What if you want to call an entire row or column? Again there are several ways to do this, but R has provided a shortcut: Leave either the row or column value empty.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>dat_matrix[,<span class="dv">3</span>] <span class="co">#Specifying a column, but not a row calls up the entire column</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17 18 19 20 21 22 23 24</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>dat_matrix[<span class="dv">2</span>,] <span class="co">#Specifying a row, but not a column calls up the entire row</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2 10 18 26</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Positional subsetting can also be used to <strong>exclude</strong> values from a vector or matrix. Exclusive subsetting return all values except those in specified positions. Observe what happens when you include a ‘-’ when subsetting based on the previously defined positions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>dat_matrix[seq_positions, <span class="dv">3</span>]</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17 19 21 23</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>dat_matrix[<span class="sc">-</span>seq_positions, <span class="dv">3</span>]</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 18 20 22 24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you’re defining specific positions to exclude, parentheses are important: -1:5 is not the same as -(1:5).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>dat_matrix[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),<span class="dv">1</span>]</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 7 8</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>dat_matrix[<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span>]</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in dat_matrix[-1:5, 1]: only 0's may be mixed with negative subscripts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>NOTE: If you’re storing data after an exclusive subset, make sure you’re assigning it to a new variable, not overwriting the old variable. If you’re not careful, exclusive subsetting is an easy way to lose data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#If you use just re-assign to the same variable...</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>excl_matrix <span class="ot">=</span> dat_matrix</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(excl_matrix)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>excl_matrix <span class="ot">=</span> excl_matrix[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),] <span class="co">#Removes the first two rows</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(excl_matrix)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    3   11   19   27</span></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    4   12   20   28</span></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    5   13   21   29</span></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    6   14   22   30</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    7   15   23   31</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    8   16   24   32</span></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="co">#If you accidentally run that line of code again, you'll lose ANOTHER two rows</span></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>excl_matrix <span class="ot">=</span> excl_matrix[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),] </span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(excl_matrix)</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    5   13   21   29</span></span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    6   14   22   30</span></span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    7   15   23   31</span></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    8   16   24   32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#If you use a new variable name...</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>excl_matrix <span class="ot">=</span> dat_matrix</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(excl_matrix)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>next_matrix <span class="ot">=</span> excl_matrix[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),] <span class="co">#Removes the first row</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(next_matrix)</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    3   11   19   27</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    4   12   20   28</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    5   13   21   29</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    6   14   22   30</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    7   15   23   31</span></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    8   16   24   32</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="co">#Now if you accidentally run the line, you've still got all the data you wanted</span></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>next_matrix <span class="ot">=</span> excl_matrix[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),]</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(next_matrix)</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    3   11   19   27</span></span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    4   12   20   28</span></span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    5   13   21   29</span></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    6   14   22   30</span></span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    7   15   23   31</span></span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    8   16   24   32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In many cases rather than removing data from specific positions, it’s usually a better idea to call data that fulfills some requirement. This also has the benefit of working when you don’t know the exact positions of wanted vs.&nbsp;unwanted data. This is called logical subsetting, since it’s based on the evaluation of logical statements. Buckle up, this is where the syntax can get a little weird.</p>
+</section>
+<section id="logical-subsetting" class="level3">
+<h3 class="anchored" data-anchor-id="logical-subsetting">Logical Subsetting</h3>
+<p>Logical subsetting will return values that result in a TRUE evaluation of the logical statement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>dat_matrix[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">3</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>dat_matrix[dat_matrix[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="dv">1</span>]</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 7 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s break that syntax down. Remember, subsetting matrices requires identifying positions based on rows and columns. In the above expression, you’re using the logical statement ‘dat_matrix[,1] &gt; 3’ instead of specifying row numbers: The positions in the first column that satisfy the logical statement are used as a substitute for row numbers. As your data sets get more complex, logical subsetting becomes more and more useful, as it allows you to subset without needing to know the exact positions of the desired data.</p>
+<p><strong>Check Point</strong>: What type of data structure is produced by the subsets we’ve shown so far?</p>
+<p>The final utility of logical subsets we’ll cover for matrices is creating a new matrix by selecting entire rows or columns in an existing matrix. We’ve already talked about how to call an entire row or column in a matrix (just leave out the column or row position, respectively). We can combine this syntax with a logical subset to pull entire rows or columns that fulfill the logical statement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>dat_matrix[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">3</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>dat_matrix[dat_matrix[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">3</span> ,] <span class="co">#Note: no column position specified</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    4   12   20   28</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    5   13   21   29</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    6   14   22   30</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    7   15   23   31</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    8   16   24   32</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="co">#You're not restricted to just evaluating the first column either</span></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>dat_matrix[,<span class="dv">3</span>] <span class="sc">&lt;=</span> <span class="dv">20</span></span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE</span></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>dat_matrix[dat_matrix[,<span class="dv">3</span>] <span class="sc">&lt;=</span> <span class="dv">20</span> ,] </span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Again, let’s break down that syntax. The first logical subset pulls the entire row when the value in the column 1 position is greater than, but not equal to, 3. The second subset pulls any row where the value in the column 3 position is less than or equal to 20. Subsets like this can be confusing because it looks like you’re specifying rows to pull based on a column. Just keep the structure of the data object in mind. Sometimes it’s useful to remember that the length of a column is equal to the number of rows, and vice versa. Specifying a position in a column is the same as specifying a row number.</p>
+</section>
+<section id="subsetting-dataframes" class="level3">
+<h3 class="anchored" data-anchor-id="subsetting-dataframes">Subsetting Dataframes</h3>
+<p>Data frames can be subset in all the same ways as matrices. There is an additional method of subsetting that is specific to data frames though that is extremely useful. Remember that when we converted from a matrix into a data frame the main difference was the data frame had column names, while the matrix did not. These column names can be used to subset by specifying dataframe$name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_matrix)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    9   17   25</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2   10   18   26</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3   11   19   27</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    4   12   20   28</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    5   13   21   29</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    6   14   22   30</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [7,]    7   15   23   31</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [8,]    8   16   24   32</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>matrix_df <span class="ot">=</span> <span class="fu">as.data.frame</span>(dat_matrix)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matrix_df) <span class="co">#Columns have been named V1 though V4</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3 V4</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1  9 17 25</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2 10 18 26</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  3 11 19 27</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  4 12 20 28</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  5 13 21 29</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  6 14 22 30</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  7 15 23 31</span></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  8 16 24 32</span></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>matrix_df<span class="sc">$</span>V3</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17 18 19 20 21 22 23 24</span></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>subset_df <span class="ot">=</span> matrix_df[matrix_df<span class="sc">$</span>V2 <span class="sc">&gt;</span> <span class="dv">14</span>,] <span class="co">#Calls any row where the V2 value </span></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>                                          <span class="co">#is greater than 14</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>One other nice feature of working with data frames is that it’s easy to create new columns, just by specifying them as dataframe$new_column. If you specify a column that does not exist, R will create a new column with that name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>matrix_df</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3 V4</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1  9 17 25</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2 10 18 26</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  3 11 19 27</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  4 12 20 28</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  5 13 21 29</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  6 14 22 30</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  7 15 23 31</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  8 16 24 32</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>matrix_df<span class="sc">$</span>colour <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Red"</span>, <span class="st">"Blue"</span>), <span class="at">times =</span> <span class="dv">4</span>)</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>matrix_df</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3 V4 colour</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1  9 17 25    Red</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2 10 18 26   Blue</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  3 11 19 27    Red</span></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  4 12 20 28   Blue</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  5 13 21 29    Red</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  6 14 22 30   Blue</span></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  7 15 23 31    Red</span></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  8 16 24 32   Blue</span></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>red_df <span class="ot">=</span> matrix_df[matrix_df<span class="sc">$</span>colour <span class="sc">==</span> <span class="st">"Red"</span>,]</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>red_df</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3 V4 colour</span></span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1  9 17 25    Red</span></span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  3 11 19 27    Red</span></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  5 13 21 29    Red</span></span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  7 15 23 31    Red</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can also subset based on multiple logical statements. This is possible in both matrices and data frames, but the use of column names tends to help keep the statements from getting to be too confusing. There are a couple of these types of modifiers to logical statements. The modifier ‘&amp;’ is perhaps the most common, and specifies positions that fulfil condition 1 AND condition 2. We will cover other modifiers in later exercises.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>matrix_df</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3 V4 colour</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1  9 17 25    Red</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2 10 18 26   Blue</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  3 11 19 27    Red</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  4 12 20 28   Blue</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  5 13 21 29    Red</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  6 14 22 30   Blue</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  7 15 23 31    Red</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  8 16 24 32   Blue</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Note that different logical evaluators are NOT separated by commas</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>double_sub <span class="ot">=</span> matrix_df[matrix_df<span class="sc">$</span>colour <span class="sc">==</span> <span class="st">"Blue"</span> <span class="sc">&amp;</span> matrix_df<span class="sc">$</span>V2 <span class="sc">&gt;</span> <span class="dv">12</span>,]</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>double_sub</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   V1 V2 V3 V4 colour</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  6 14 22 30   Blue</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  8 16 24 32   Blue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="importing-data" class="level2">
+<h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
+<p>Most of the time, data won’t be generated internally. Instead, files containing the data will need to be imported into the R environment. There are several tools to accomplish this. The easiest is to use the “Import Dataset” drop-down menu in the Environment window. This will allow you to select data sets in different formats to import. Pro tip: you can copy and paste the generated code sample into your script for easy access later!</p>
+<p>Sometimes data sets need to be imported manually, either because additional details need to be specified or because the data format is not supported by the “Import Dataset” tool. This is especially common when working with more complex data (ex - satellite data or DNA sequences). There are several functions that can be used to import data in those formats, but because they are often highly specific to the type of data, we won’t cover them here.</p>
+<p>The most important step before importing data is to set your working directory. This will tell R where to look for files. You can see what files R can “see” in the Files window (lower right quadrant). Remember, R cannot infer intentions; without the correct file path you cannot import data. You can set your working directory using the function setwd(“file_path”).</p>
+<p>Tip: If you’re not exactly sure of the file path, it’s safest to use tab to navigate through your local file structure. Type ‘setwd(““)’, and then with your cursor placed inside the quotation marks, hit tab. R should provide a dropdown file tree that you can then use to navigate to the desired directory. In a later tutorial, we will cover the use of R Projects, which simplify this process.</p>
+<p>Once you’ve imported the data, it’s always a good idea to check the structure and summary of the object. The summary() function will return a 6-number summary for each column.</p>
+<p>This is the end of the first tutorial. Hopefully you’re beginning to feel more comfortable with the R interface, and the basics of data structuring and manipulation. The next section will deal with intermediate data manipulation. Later tutorials will focus on methods for summarizing data, common statistical analyses, and data visualization.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

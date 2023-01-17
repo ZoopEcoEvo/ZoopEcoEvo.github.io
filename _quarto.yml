@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Project Workflow"
+  navbar:
+    left:
+      - href: 00_index.qmd
+        text: Intro 
+      - 01_git_and_R.qmd
+      - 02_coding.qmd
+      - 03_project_dev.qmd 
+  sidebar:
+    - title: "Coding in R"
+      style: "docked"
+      background: light
+      contents:
+        - 02_coding.qmd
+        - auto: "*02*_Tutorial_*.Rmd"
+        - href: 02f_code_style.qmd
+          text: Notes on Coding Style 
+    - title: "Project Development"
+      contents: 
+        - 03_project_dev.qmd 
+        - href: 03a_data_analysis.qmd
+          text: "Data Analysis"
+        - href: 03b_pull_requests.qmd
+          text: "Pull Requests"
+        - href: 03c_reports.qmd
+          text: "Project Reports"
+        - href: 03d_manuscripts.qmd
+          text: "Manuscript Prep"
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+
+editor: visual
+

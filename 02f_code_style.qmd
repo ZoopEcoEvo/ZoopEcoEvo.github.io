@@ -1,0 +1,30 @@
+---
+title: "Coding Style"
+---
+
+Opening up an unfamiliar data set or script and attempting to understand what was done during an analysis can be a daunting task (almost as daunting as writing the script in the first place). As you work on your code, keep its "legibility" in mind - not only will this help other people understand your code, but it will help *you* understand the code if you return to a project and find you've forgotten what's been done (and trust me, you will forget).
+
+#### Style
+
+As you code more, you will develop your own "coding style" (a series of decisions you make about alignment and spacing of code, naming of variables and functions, commenting strategies, script structuring, etc. with the goal of promoting code clarity and interpretability). Developing your own style is a *good thing*, as it makes coding feel more natural. I will generally not, therefore, dictate minor stylistic decisions; so long as your code is understandable, feel free to write however you'd like. That being said, there are two levels of consistency you need to consider:
+
+-   **Internal consistency** - Your code needs to be consistent within each project (and especially within each script). Changing up how variables are named, indentation strategies, etc. can make it more difficult to follow the overall flow of an analysis.
+-   **General coding style** - At some point, you may find yourself working on several projects at the same time. Having a consistent coding style will make it easier to switch between projects. Keeping track of the small style details for each project quickly becomes frustrating, and can keep you from reaching your "flow state" (that state of mind where you are fully immersed in the problem you're trying to solve). Sometimes it's helpful to keep a "style guide" document where you can keep track of your naming conventions and other stylistic decisions until they become second nature.
+
+For some in depth examples of what goes into a "coding style" see [here](https://www.r-bloggers.com/2019/01/🖊-r-coding-style-guide/) and [here](https://style.tidyverse.org/index.html).
+
+#### Commenting
+
+There is a fine line between over- and under-commenting on code. How you choose to comment on your code is part of your personal coding style, but there are some best practices you should keep in mind (see [here](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/) for some useful non-R-specific tips).
+
+-   Comments should most often detail *why* something was done, and only rarely *how* it was done. Keep in mind that good comments do not excuse unclear code.
+-   Similarly, comments shouldn't duplicate the code. Not every line needs a comment associated with it detailing what it's doing.
+-   If you're pulling code from elsewhere, cite it! This might be from a paper's supplemental materials, a StackOverflow post, or a tutorial. In all cases, give clear attribution.
+
+Rules are meant to be broken. These best practices are aimed at making code interpretable. Part of this is avoiding visual clutter. However, if you find it helps to comment more frequently as you start out, do that.
+
+#### README Files
+
+README files are **crucial**. These act as a roadmap for the project, which is especially important for the project folder setup we will generally use - keeping track of which scripts do what, and how they're connected is going to be a big help for anyone trying to understand your analyses. These files require substantial effort, and should not be treated as an afterthought.
+
+There are many different examples of how a README could be compiled and structured. The general format I recommend using is [here](https://github.com/ZoopEcoEvo/project_template/blob/main/README.md) (this is what is included in the project folder template). This reflects information, suggestions, and advice from the American Naturalist ([here](https://www.journals.uchicago.edu/journals/an/instruct) and [here](http://comments.amnat.org/2021/12/)), [Dryad](https://datadryad.org/stash/best_practices) (a popular data repository), and [Cornell](https://data.research.cornell.edu/content/readme).

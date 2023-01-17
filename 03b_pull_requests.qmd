@@ -1,0 +1,23 @@
+---
+title: "Pull Requests"
+---
+
+Before you know it, you'll have made some major progress on your project. Let's say you've finished running some analyses and made a couple nice figures, backing up the changes made with Git/GitHub along the way. You're ready to get some feedback on your work, and include the progress you've made in the "official" version of the project on the main branch. Remember, however, that this main branch will generally be "read only". The process of getting feedback and adding new material to the main branch are interlinked in our workflow, mediated by something called a "pull request" (PR) - a request you make for the main branch to pull in your work. When successfully completed, this will merge your working branch into the main branch. Because this will alter the "official" version of the project, the code involved in a PR has to be checked over by someone, which creates the opportunity to give feedback / suggestions.
+
+Before you initiate the PR, make sure your local branch is up to date by doing one last pull-push cycle from RStudio. This will make sure that:
+
+1.  your local code reflects the most up-to-date version on the repo to catch any last merge conflicts, and
+2.  that your branch on the virtual repo reflects all the changes you've made.
+
+Once you're sure everything is up to date, initiate the PR by clicking "New Pull Request" **on GitHub**. This should be visible when viewing the active branches tab. Doing this manually on GitHub rather than through RStudio is the easiest way to start the PR.
+
+This will then start the Code Review process. I will automatically be notified, but you can also mention any other lab member in the PR that you'd like to look over your code (just be mindful about how much time you're asking from other lab members). During code review, we will typically start by looking over the output (either the HTML or the github doc/markdown in the Reports directory) since this should include both code and graphical outputs. Be sure to specify if there are additional files you're looking for feedback on. Depending on time available and complexity of the code, we may also review the rest of the project folder (other scripts, raw data, output data, etc.). We'll make comments and suggestions for changes, or accept the PR and merge the development branch into the main branch. Once merged, this now stands as the new official version, and you can start a new branch to work on the next project development goal.
+
+The Pull Request is central to the workflow, and as you'll see is used across all phases of project development. This process is iterative, by design! And while it might take some time and effort to get the code worked out, this will hopefully help to develop your coding skills and catch potential mistakes before they get embedded in papers and presentations. Equally important, it distributes the responsibility for checking the code across the group - If we all benefit from your work, we should all share some of this burden.
+
+# Issues or Pull Requests?
+
+Let's say you're working on a project and have a small issue/solution/chunk of code you want some feedback on. If there's no major progress to report yet, it might not be worth it to go through the whole process of starting a PR. There are two other ways to get feedback:
+
+1.  The simplest: bring it up during our regularly scheduled meeting. If you think it'll take up a bit of time, you can always ask to set up a separate meeting as well.
+2.  You can also raise an issue on GitHub. Along the top bar of the repo, you'll see an "Issues" tab. By clicking "New Issue" you'll be able to ask questions, bring attention to problems, etc. You can also tag people if there's someone specific you want to ask. Be sure to include exactly how to find the relevant code (a line number and file name, for example). Avoid the temptation to send code or code chunks via email - keep it on GitHub.
