@@ -6,7 +6,9 @@ After the project is set up, your focus will shift to data collection and analys
 
 As you work through these tutorials, keep in mind that the goal is to provide an introduction to R and how it can be used to work with data and make graphics. This represents just the first step towards "fluency" (or even proficiency) in R. Consistent application of the material presented is required to maintain and improve your R skills.
 
-There are two specific learning objectives:
+# Learning Objectives
+
+Becoming comfortable working with R takes time. These tutorials are just a first step in that direction. There are two specific learning objectives:
 
 -   Learning Objective 1 - Achieve a level of understanding to be able to use Google to answer questions / overcome obstacles in R.
     -   Be able to identify your issue

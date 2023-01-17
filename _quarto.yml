@@ -22,6 +22,8 @@ website:
     - title: "Coding in R"
       style: "docked"
       background: light
+      repo-url: https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io 
+      repo-actions: [edit, issue]
       contents:
         - 02_coding.qmd
         - auto: "*02*_Tutorial_*.Rmd"
