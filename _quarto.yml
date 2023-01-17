@@ -4,12 +4,14 @@ project:
 
 website:
   title: "Project Workflow"
+  repo-url: https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io 
+  repo-actions: [edit, issue]
   site-url: https://zoopecoevo.github.io 
   navbar:
     logo: Figures/copepod_icon_dark.png
     left:
       - href: index.qmd
-        text: Intro 
+        text: "Intro" 
       - 01_git_and_R.qmd
       - 02_coding.qmd
       - 03_project_dev.qmd 
