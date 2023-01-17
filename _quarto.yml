@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  site-url: https://zoopecoevo.github.io 
 
 website:
   title: "Project Workflow"
