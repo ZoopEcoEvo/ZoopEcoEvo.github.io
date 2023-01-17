@@ -16,6 +16,11 @@ website:
       - 02_coding.qmd
       - 03_project_dev.qmd 
   sidebar:
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io 
     - title: "Coding in R"
       style: "docked"
       background: light
