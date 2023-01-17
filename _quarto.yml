@@ -1,11 +1,12 @@
 project:
   type: website
-  output-dir: docs
-  site-url: https://zoopecoevo.github.io 
+  output-dir: docs 
 
 website:
   title: "Project Workflow"
+  site-url: https://zoopecoevo.github.io 
   navbar:
+    logo: Figures/copepod_icon.png
     left:
       - href: 00_index.qmd
         text: Intro 
