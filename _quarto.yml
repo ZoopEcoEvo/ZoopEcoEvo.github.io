@@ -6,7 +6,7 @@ website:
   title: "Project Workflow"
   site-url: https://zoopecoevo.github.io 
   navbar:
-    logo: Figures/copepod_icon.png
+    logo: Figures/copepod_icon_dark.png
     left:
       - href: index.qmd
         text: Intro 
