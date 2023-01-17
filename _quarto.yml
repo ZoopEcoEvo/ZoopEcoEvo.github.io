@@ -8,7 +8,7 @@ website:
   navbar:
     logo: Figures/copepod_icon.png
     left:
-      - href: 00_index.qmd
+      - href: "00_index.qmd"
         text: Intro 
       - 01_git_and_R.qmd
       - 02_coding.qmd
