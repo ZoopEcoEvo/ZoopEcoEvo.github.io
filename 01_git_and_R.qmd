@@ -56,6 +56,14 @@ If you're the only one working on your code, you can focus on just your working 
 
 -   You can pull from the main branch into your working branch by entering this into the **terminal** (not the console): **git pull origin main**
 
+# Other Options for Working with Git
+
+So far we've been assuming you'll be working exclusively in RStudio. The interface between RStudio and Git/GitHub is usually sufficient to integrate your project into our workflow. There are several other options, however, for using Git/GitHub to version control your work.
+
+Similar to RStudio, there is a [desktop Graphical User Interface (GUI)](https://desktop.github.com) for working with Git and GitHub, which can help organize projects. It's fairly intuitive to use, and I'd recommend checking it out if you're not a fan of the RStudio interface. One benefit of the desktop GUI is that you can version control projects that **don't** have a .Rproj file associated with them. Remember, any collection of files can be version controlled with Git, not just R Project Folders.
+
+The other (probably more common) approach is running Git through the command line. This direct interface with Git provides the most control / functionality, so if you find yourself too limited by the GUIs, it might be a good idea to check whether the command line interface would better suit your needs.
+
 # Summary
 
 Below is a general outline of the main steps you might take when sitting down at your computer to do some work on a project.
