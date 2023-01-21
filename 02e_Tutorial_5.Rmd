@@ -17,7 +17,7 @@ One of the best parts of a project is being able to finally share the results of
 
 # Markdown
 
-After investing time and effort in learning the R coding language, you probably don't want to hear "time to learn another language". Before you close this file though, let me assure you that Markdown is not only simple, but extremely powerful when used with R analyses. Markdown is a simple "markup" language used to format documents. R Markdown integrates R code within this formatting framework, allowing you to more efficiently integrate code, visualizations, and written reports. You might imagine that this would be useful for more than just written reports, and indeed, R Markdown can be used to create a wide variety of outputs, including presentation slides and web pages. These tutorials were also generated using R Markdown files. We will focus on just two outputs, PDF and HTML versions of a document.
+After investing time and effort in learning the R coding language, you probably don't want to hear "time to learn another language". Before you close this tutorial though, let me assure you that Markdown is not only simple, but extremely powerful when used with R analyses. Markdown is a simple "markup" language used to format documents. R Markdown integrates R code within this formatting framework, allowing you to more efficiently integrate code, visualizations, and written reports. You might imagine that this would be useful for more than just written reports, and indeed, R Markdown can be used to create a wide variety of outputs, including presentation slides and web pages. These tutorials were also generated using R Markdown files. We will focus on just two outputs, PDF and HTML versions of a document.
 
 ## Setting up your R Markdown
 
