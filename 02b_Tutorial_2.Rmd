@@ -10,11 +10,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
 ```
 
-Hopefully you're now familiar with the basic syntax of R and the structure of common data objects. As we saw in the first tutorial, both are important when manipulating data in what might seem like simple ways (e.g. - subsetting rows or columns in a dataframe). This section of the tutorial will further develop your ability to manipulate and analyze data using slightly more complicated code structures.
+Hopefully you're now familiar with the basic syntax of R and the structure of common data objects. As we saw in the first tutorial, both are important when manipulating data in what might seem like simple ways (e.g. - subsetting rows or columns in a dataframe). This tutorial will further develop your ability to manipulate and analyze data using slightly more complicated code structures.
 
-# rbind() and cbind()
+# rbind( ) and cbind( )
 
-Even when you're importing data files from excel or .csv files, you may need to combine data objects in R during an analysis. There are two straightforward ways to do this using base R; rbind() and cbind(). These stand for "Row Bind" and "Column Bind" respectively. They're perhaps best illustrated when trying to add a vector to an array or data frame. In the example below, the function rbind() will bind the vector to the data frame as a new row, while cbind() will bind the vector to the data frame as a new column. Note that the new column takes on the variable names as a column name.
+Even when you're importing data files from excel or .csv files, you may need to combine data objects in R during an analysis. There are two straightforward ways to do this using base R; rbind( ) and cbind( ). These stand for "Row Bind" and "Column Bind" respectively. They're perhaps best illustrated when trying to add a vector to an array or data frame. In the example below, the function rbind( ) will bind the vector to the data frame as a new row, while cbind( ) will bind the vector to the data frame as a new column. Note that the new column takes on the variable names as a column name.
 
 ```{r}
 #Note that our vector is length 7, and that the array is a 7 x 7 grid
@@ -39,10 +39,10 @@ rbind(df1, df2)
 cbind(df1, df2)
 ```
 
-You might notice that when cbinding these two data frames, the resulting object has **duplicate** column names. This is absolutely an issue. When rbinding data frames, they must have the same column names, in the same order, otherwise R will not allow the objects to be joined (we will cover more flexible strategies for binding rows in a later tutorial). However, when cbinding data frames, it's important to make sure that the columns either have different names before binding, or are renamed after binding, to prevent confusion or interference with later analyses. Re-naming columns has a slightly different syntax from anything we've done so far.
+You might notice that when cbinding these two data frames, the resulting object has **duplicate** column names. This is absolutely an issue. When rbinding data frames, they must have the same column names, in the same order, otherwise R will not allow the objects to be joined (we will cover more flexible strategies for binding rows in the Tidyverse tutorial). However, when cbinding data frames, it's important to make sure that the columns either have different names before binding, or are renamed after binding, to prevent confusion or interference with later analyses. Re-naming columns has a slightly different syntax from anything we've done so far.
 
 ```{r error = T}
-colnames(df1) = c("col1", "col2", "col3", "col4")
+colnames(df1) = c("col1", "col2", "col3", "col4") #This function tells R that the column names for df1 should be pulled from the following vector of character strings.
 
 rbind(df1, df2)
 
@@ -59,9 +59,9 @@ colnames(df2) = names_for_columns
 cbind(df1, df2)
 ```
 
-# Summarizing data frames with table()
+# Summarizing data frames with table( )
 
-When dealing with categorical or non-numeric data, it can sometimes be useful to summarize the contents of a data object in table format. The table() function provides counts for each of the different categories or factors contained within a column.
+When dealing with categorical or non-numeric data, it can sometimes be useful to summarize the contents of a data object in table format. The table( ) function provides counts for each of the different categories or factors contained within a column.
 
 ```{r}
 #Manually creating a data frame that contains information for five cats
@@ -86,11 +86,11 @@ tabby_cats = cat_data[cat_data$colour == "tabby",]
 tabby_cats$name
 ```
 
-This strategy basically copies, pastes, and slightly alters code for each category. When dealing with small numbers of categories, this is manageable (if a little inefficient), but what if you have twenty categories? A hundred? It rapidly becomes infeasible to replicate code for large numbers of categories. To solve this issue, we use a code structure called a ""for loop"".
+This strategy basically copies, pastes, and slightly alters code for each category. When dealing with small numbers of categories, this is manageable (if a little inefficient), but what if you have twenty categories? A hundred? It rapidly becomes infeasible to replicate code for large numbers of categories. To solve this issue, we use a code structure called a "for loop".
 
 # The *for loop*
 
-A "for loop" is a simple way to run the same chunk of code many times on different data, without having to copy, paste, and modify the code. As such, the "for loop" is often essential for keeping code manageable. A "for loop" has two components, the "for" statement, and the "code chunk". The code chunk is the code you want to run. While this is of course an important component of the "for loop", the for statement is what's really at the heart of this coding structure. The for statement simply establishes a variable and controls its identity. In the example below, the for statement is saying that there is some variable 'i', which is going to cycle through values from 1 to 10. The code chunk will then iterate, or repeat, with each of those different values assigned to i. These two different components follow a set syntax of for(statement){code_chunk}, but it's common to see the code chunk split across multiple lines, with the first curly bracket following the for statement, and the code itself below that.
+A "for loop" is a simple way to run the same chunk of code many times on different data, without having to copy, paste, and modify the code. As such, the "for loop" is often essential for keeping code manageable. A "for loop" has two components, the "for" statement, and the looping "code chunk". The code chunk is the code you want to run. While this is of course an important component of the "for loop", the for statement is what's really at the heart of this coding structure. The for statement simply establishes a variable and controls its identity as the code chunk repeats. In the example below, the for statement is saying that there is some variable 'i', which is going to cycle through values from 1 to 10. The code chunk will then iterate, or repeat, with each of those different values assigned to i. These two different components follow a set syntax of for(statement){code_chunk}, but it's common to see the code chunk split across multiple lines, with the first curly bracket following the for statement, and the code itself below that.
 
 ```{r}
 for(i in 1:10){
@@ -200,7 +200,7 @@ print(c(i, j, counter))
 
 In this case, the number of iterations is different from the final values of either of the two variables. You can still simply take the product of the two final variable values to get the number of iterations, but in many cases, more complex "for loops" have maximum variable values that change across iterations, making this much more difficult. In those cases, the counter structure is the best option. Can you think of one of the weaknesses of a counter structure? What happens if you run the "for loop" multiple times without resetting the counter?
 
-Counters are also commonly used to count the occurrence of specific types or values of data (often referred to as a 'flag' instead of a counter in these cases). Again, oftentimes this data can be retrieved using something like table() or a logical subset, but as you get into more complex analyses and code, running a flag within or alongside another process can sometimes be useful.
+Counters are also commonly used to count the occurrence of specific types or values of data (often referred to as a 'flag' instead of a counter in these cases). Again, oftentimes this data can be retrieved using something like table( ) or a logical subset, but as you get into more complex analyses and code, running a flag within or alongside another process can sometimes be useful.
 
 ```{r}
 tabbies = 0
