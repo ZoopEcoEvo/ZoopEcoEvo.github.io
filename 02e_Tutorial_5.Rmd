@@ -110,6 +110,12 @@ library(DT)
 table_data = palmerpenguins::penguins %>% 
   select(species, island, body_mass_g, sex, year)
 
-datatable(table_data, rownames = FALSE, filter="top", options = list(pageLength = 10, scrollX = T))
+datatable(table_data, rownames = FALSE, filter="top", 
+          options = list(pageLength = 10, scrollX = T))
 
 ```
+
+These tutorials have covered the basics of how R can be used to analyze data, starting with the structure of data, data carpentry, and simple visualizations. We've also covered how R and markdown documents are integrated to help streamline the process of creating rich, informative summaries and reports. These tutorials should provide a firm foundation for you to work from as you begin to analyze your own data. Remember, this is just the beginning of what you can do in R. Hopefully these basic skills will help as you begin to explore the rest of R's capabilities on your own though. 
+
+# Making your own contributions
+As you work on further developing your R skills, you might come across topics that would be useful to expand on or include in these tutorials. Here is a great opportunity for you to contribute to the tutorials. The website is hosted on GitHub, just like the data analytic projects we work on, and you should be able to suggest changes using the same pull request approach we've discussed elsewhere on this site. 
