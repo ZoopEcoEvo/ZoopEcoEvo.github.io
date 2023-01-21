@@ -22,7 +22,7 @@ After investing time and effort in learning the R coding language, you probably 
 ## Quarto
 R Markdown files are fairly specific - it's assumed that the code you integrate into the files is R code. As projects become increasingly multi-lingual though, the ability to run code from other languages (e.g. Python) in these reports becomes increasingly useful. Recently, a new markdown publishing system called [Quarto](https://quarto.org) has provided this capacity. Along with some refined aesthetic capabilities, the ability to run code from languages other than R makes this system worth checking out. Similar to R Markdown, Quarto docs can be used to create a wide range of produces. The website these tutorials are hosted on, for example, were created using Quarto.
 
-## Setting up your R Markdown
+# Setting up your R Markdown
 
 In RStudio, a new R Markdown file can be created in the same way as a new script, using the page icon in the top left corner of the window. You'll notice a number of options in the drop-down menu, which can be explored at your leisure. When you create a new Markdown file you'll be presented with a series of fields and options. Title and Author can be filled in as appropriate. You can input a static date, or choose to use the current date each time you knit (i.e. - run the code for) the document. There are three primary outputs for a markdown file: an HTML, PDF, or Word document. Each come with their own advantages, some of which will be explored in this tutorial. Also, don't be overly concerned about what you enter into these fields or which options you select - all of these can be changed using the first key component of the markdown file, the YAML.
 
