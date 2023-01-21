@@ -17,7 +17,10 @@ One of the best parts of a project is being able to finally share the results of
 
 # Markdown
 
-After investing time and effort in learning the R coding language, you probably don't want to hear "time to learn another language". Before you close this tutorial though, let me assure you that Markdown is not only simple, but extremely powerful when used with R analyses. Markdown is a simple "markup" language used to format documents. R Markdown integrates R code within this formatting framework, allowing you to more efficiently integrate code, visualizations, and written reports. You might imagine that this would be useful for more than just written reports, and indeed, R Markdown can be used to create a wide variety of outputs, including presentation slides and web pages. These tutorials were also generated using R Markdown files. We will focus on just two outputs, PDF and HTML versions of a document.
+After investing time and effort in learning the R coding language, you probably don't want to hear "time to learn another language". Before you close this tutorial though, let me assure you that Markdown is not only simple, but extremely powerful when used with R analyses. Markdown is a simple "markup" language used to format documents. R Markdown integrates R code within this formatting framework, allowing you to more efficiently integrate code, visualizations, and written reports. You might imagine that this would be useful for more than just written reports, and indeed, R Markdown can be used to create a wide variety of outputs, including presentation slides and web pages. 
+
+## Quarto
+R Markdown files are fairly specific - it's assumed that the code you integrate into the files is R code. As projects become increasingly multi-lingual though, the ability to run code from other languages (e.g. Python) in these reports becomes increasingly useful. Recently, a new markdown publishing system called [Quarto](https://quarto.org) has provided this capacity. Along with some refined aesthetic capabilities, the ability to run code from languages other than R makes this system worth checking out. Similar to R Markdown, Quarto docs can be used to create a wide range of produces. The website these tutorials are hosted on, for example, were created using Quarto.
 
 ## Setting up your R Markdown
 
