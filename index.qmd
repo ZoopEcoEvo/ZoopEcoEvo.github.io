@@ -8,7 +8,7 @@ In general, operating in academia means most projects will be geared towards eve
 
 This workflow is organized around a "project folder" - a collection of **all** materials (background information, data, scripts, outputs, etc.) used for a project, contained within a single directory. This concept is described [in these slides](https://djnavarro.net/slides-project-structure/#1) and [here](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner%27s-guide/). I've set up a [template project folder](https://github.com/ZoopEcoEvo/project_template) that we'll generally use to get your work started. A map of this project folder is included below to give you some idea of the framework the workflow described on this page works within. How the project folder functions during Project Development is expanded in that section.
 
-![](Figures/project_folder_schematic.jpg)
+![](Figures/project_folder_schematic.png)
 
 As you can probably already tell, the workflow also relies on Git and GitHub to version control your work, to collaborate and review code, and to share data and results. Project folders and GitHub integrate nicely, and we'll use a specific workflow while developing projects and writing code based on "GitHub flow".
 

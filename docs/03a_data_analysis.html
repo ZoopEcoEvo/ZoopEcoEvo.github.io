@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The heavy lifting is done via (a series of) data processing scripts, housed within the Scripts directory. This should include any major carpentry (reshaping, organizing, filtering, etc.), along with any intensive statistical analyses. The output of both should be saved to the Outputs directory. <strong>THE RAW DATA SHOULD NEVER BE OVERWRITTEN!</strong> The goal here is to retain the raw data while also reducing the run time / computation power required for data visualization and manuscript prep. As you’ll see, both phases are highly iterative (you’ll usually knit the same document many times before it’s ready to be sent out), and the last thing you’ll want is for that process to be bogged down by computationally intensive processes or analyses.</p>
+<p>The heavy lifting is done via (a series of) data processing scripts, housed within the Scripts directory. This should include any major carpentry (reshaping, organizing, filtering, etc.), along with any intensive statistical analyses. The output of both should be saved to the Outputs directory. Throughout this process, you should treat the raw data as ‘read only’ and the processed data as disposable. To emphasize the important part of this, <strong>THE RAW DATA SHOULD NEVER BE OVERWRITTEN!</strong> Data is usually labor- and cost-intensive to collect. You want to minimize the possibility of corrupting data by modifying the raw data as little as possible. Further, in order for your analyses to be replicable, it’s crucial that you retain the raw data so others can repeat the steps you took (or try their own analyses). By storing the processed data, you reap an additional benefit in the reduction of the run time / computation power required for data visualization and manuscript prep. As you’ll see, both phases are highly iterative (you’ll usually knit the same document many times before it’s ready to be sent out), and the last thing you’ll want is for that process to be bogged down by computationally intensive processes or analyses.</p>
 <p>In order to balance the need to retain the raw data and also reduce run times, data processing scripts read in <em>raw</em> data and save <em>processed</em> data, which can be used downstream for visualizations and other purposes.</p>
 <section id="splitting-scripts" class="level1">
 <h1>Splitting Scripts</h1>

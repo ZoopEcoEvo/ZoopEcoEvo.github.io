@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -160,6 +160,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#another-benefit-of-the-project-folder" id="toc-another-benefit-of-the-project-folder" class="nav-link active" data-scroll-target="#another-benefit-of-the-project-folder">Another Benefit of the Project Folder</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
   <li><a href="#getting-feedback" id="toc-getting-feedback" class="nav-link" data-scroll-target="#getting-feedback">Getting Feedback</a></li>
+  <li><a href="#post-publication" id="toc-post-publication" class="nav-link" data-scroll-target="#post-publication">Post-publication</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/03d_manuscripts.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -186,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="another-benefit-of-the-project-folder" class="level1">
 <h1>Another Benefit of the Project Folder</h1>
 <p>Project folders are also set up to help integrate figures, statistical results, etc. into the manuscript writing process. By keeping all relevant files in the same project folder, and using the controller script to weave different components together, it should be easier to write (and then update) a manuscript draft with the correct results. For example, smart usage of inline code will save you from having to manually update statistical results in tables and text throughout the draft when changes are made (saving time and helping to avoid confusion down the road!). And by using the files in the Output directory to place figures, the manuscript should always be pulling from up-to-date visualizations.</p>
-<p>There should be a directory entitled “Manuscript” within each project folder, which includes a .Rmd file (the manuscript file), along with .sty and .bib files (containing formatting details and the bibliography, respectively). By default, these will produce a PDF formated in the Arxiv style and a word document when the .Rmd file is knit. This is different from the report .Rmd file (which by default outputs an HTML and special markdown file) - the main difference here is that code chunks will not appear in the PDF or word documents, while they do in the HTML and markdown outputs. As with the analysis scripts and report markdown file, the manuscript markdown file should be run through the controller script.</p>
+<p>There should be a directory entitled “Manuscript” within each project folder, which includes a .Rmd file (the manuscript file), along with .tex and .bib files (containing formatting details and the bibliography, respectively). By default, these will produce a nicely formatted PDF and a word document when the .Rmd file is knit. This is different from the report .Rmd file (which by default outputs an HTML and special markdown file) - the main difference here is that code chunks will not appear in the PDF or word documents, while they do in the HTML and markdown outputs. As with the analysis scripts and report markdown file, the manuscript markdown file should be run through the controller script.</p>
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting Started</h1>
@@ -200,6 +201,10 @@ ul.task-list li input[type="checkbox"] {
 <p>As you approach the submission stage (the manuscript draft is completed and just being polished now), it’s time to start thinking about how the data and scripts will be shared with people <strong>outside</strong> our group. One easy approach is to archive the GitHub repo with Zenodo. This allows you designate a Version of Record, which has an associated DOI. See <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">here</a> for more details.</p>
 <p>Once the new repo DOI is included in a Data Availability statement in the manuscript, it’s ready for submission. The .Rmd file is knit and the resulting PDF and word documents are prepared for submission to a preprint server and journal, respectively.</p>
 <p>During peer review, a manuscript will be read and evaluated by several reviewers who will give (varying amounts of) feedback. Once you get these reviews, you can start a new working branch for a second version of the manuscript and start making the recommended changes. Here again the benefits of using a project folder are evident - depending on the feedback you might have to make changes to the analyses or figures, which will be automatically incorporated into the manuscript (at least where file paths and inline code are used).</p>
+</section>
+<section id="post-publication" class="level1">
+<h1>Post-publication</h1>
+<p>The general static nature of published work in the current body of scientific literature creates many issues. The Github repository for each project is a “live” entity, that can overcome some of these issues by serving as a central source for corrections, updates, and expansions of the manuscript after publication. This approach is outlined in <a href="https://doi.org/10.1098/rsbl.2022.0463">this paper</a>, which integrates seamlessly with our workflow.</p>
 
 
 </section>
