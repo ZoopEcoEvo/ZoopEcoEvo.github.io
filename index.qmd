@@ -2,7 +2,7 @@
 title: "Intro to the Work Flow"
 ---
 
-In general, operating in academia means most projects will be geared towards eventual publication. Our goal is not just to share results, however, but to help people understand the analyses we did. All publications from our group will therefore include some way of accessing the associated data and scripts. However, this gets us only partway towards our goal of **replicable** and **understandable** analyses. Project materials need to be well organized and thoroughly documented (not just "accessible") in order for other people to follow what was done. This will also help other lab members, if at some point someone wants to follow up on your project, expand the scope of data you collected, or apply similar analyses to their data sets. This goal of making your work accessible, replicable, and understandable shapes the workflow I will ask you to use.
+In general, operating in academia means projects will be geared towards eventual publication. Our goal is not just to share results, however, but to help people understand the analyses we did. All publications from our group will therefore include some way of accessing the associated data and scripts. However, this gets us only partway towards our goal of **replicable** and **understandable** analyses. Project materials need to be well organized and thoroughly documented (not just "accessible") in order for other people to follow what was done. This will also help other lab members, if at some point someone wants to follow up on your project, expand the scope of data you collected, or apply similar analyses to their data sets. This goal of making your work accessible, replicable, and understandable shapes the workflow I will ask you to use.
 
 # Project Folders
 
