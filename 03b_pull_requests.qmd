@@ -15,6 +15,16 @@ This will then start the Code Review process. I will automatically be notified, 
 
 The Pull Request is central to the workflow, and as you'll see is used across all phases of project development. This process is iterative, by design! And while it might take some time and effort to get the code worked out, this will hopefully help to develop your coding skills and catch potential mistakes before they get embedded in papers and presentations. Equally important, it distributes the responsibility for checking the code across the group - If we all benefit from your work, we should all share some of this burden.
 
+# Cleaning up merged branches 
+
+For large, multi-phase projects, you may end up with many working branches. There's no issue leaving these branches on the repo after a successful pull request. If it starts to become difficult to navigate the branches (either on GitHub or in RStudio, you should consider cleaning up branches that have already been merged. If you remove them from GitHub, you'll still have a local copy of the branch. Unfortunately there's not an easy way to do remove these local branch copies through the RStudio GUI. Instead, you'll have to use command line. There's just three steps:
+
+1.  Enter 'git fetch -p' into the **terminal** window (not the console). This will prune branches no longer on remote.
+2.  Using 'git branch \--merged' (again, in the terminal window not the console), you can check which of your local branches can be safely removed because they've already been merged into the main branch.
+3.  Local branch copies can be deleted using 'git branch -d \<branch-name\>'.
+
+If you decide to clean up your branches, just be careful to ensure that everything from the branches has been merged into the main branch and that you don't delete branches you still want!
+
 # Issues or Pull Requests?
 
 Let's say you're working on a project and have a small issue/solution/chunk of code you want some feedback on. If there's no major progress to report yet, it might not be worth it to go through the whole process of starting a PR. There are two other ways to get feedback:

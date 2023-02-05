@@ -40,7 +40,7 @@ When you're ready to start working on a project, open RStudio **via the .Rproj f
 
 ## Making a working branch
 
-Remember, the main branch of each project is read-only. In order to make changes, you'll first have to make a new branch (purple connected-square icon in the top right corner of the Git pane of RStudio). Give this branch an informative name about the goal you're working towards - exp_design, data_carpentry, linear_model, etc. This will help me keep track of the project status). You should see this branch appear on the GitHub repo as well. Merging these changes back into the main branch will be covered in the Project Development section.
+Remember, the main branch of each project is read-only. In order to make changes, you'll first have to make a new branch (purple connected-square icon in the top right corner of the Git pane of RStudio). Give this branch an informative name about the goal you're working towards - exp_design, data_carpentry, linear_model, etc. This will help me keep track of the project status). You should see this branch appear on the GitHub repo as well. Merging these changes back into the main branch (and cleaning up previously merged branches) will be covered in the Project Development section.
 
 ::: column-margin
 ![](Figures/new_branch.png)
