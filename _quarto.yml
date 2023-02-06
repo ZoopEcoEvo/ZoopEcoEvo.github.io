@@ -40,6 +40,8 @@ website:
           text: "Project Reports"
         - href: 03d_manuscripts.qmd
           text: "Manuscript Prep"
+        - href: 03e_other_workflow.qmd
+          text: "Working Outside the Project Folder"
 
 format:
   html:

@@ -1,0 +1,55 @@
+---
+title: "What happens outside of the project folder?"
+---
+
+So far, we've focused on how the Project Folder is set up to help you go from data to final product. However, there's a lot of work that goes into a project **before** you have any data. In particular, you will need to have a thorough grasp of the published literature, and have a well-organized plan for data collection and management. The project folder can help with some aspects of this, but I've found that removing some of this work from the project folder can help by letting you work with a more centralized network of systems before narrowing the workflow down for a specific project.
+
+Before going any further, know that the workflow described is going to be highly individual - this is something that I've found works for me. There's no reason why you should feel the need to force yourself to work in the same way. Explore the (many) options out there! The goal is to find a workflow that works for you.
+
+# Work flow priorities
+
+A major part of research is reading literature. For better or worse, each day sees a flood of new papers published across any number of scientific journals. You need some system for capturing, sorting, organizing, and annotating these papers. Ideally, your system will also help you to make connections between key points gleaned from these papers. Each of those steps (capturing, sorting, organizing, annotating, and synthesizing) are the focus of myriad programs, tools, approaches, and philosophies. Spend some time thinking about how you work, and what elements you would benefit from. Do you want something that is simple and streamlined? Or do you like things with all the bells and whistles, that allows you to customize things to your liking? How much time per day do you intend on spending on each of these steps? Be realistic here - there's no point in setting up a system that requires a little time each day to work if you know you'd prefer to spend more time at less frequent intervals. How important is aesthetics? If working in aesthetically pleasing spaces helps keep you motivated, by all means make that a priority (just be sure you're not prioritizing aesthetics over utility). My personal workflow emphasizes five things:
+
+**Quick capture** - I need to be able to quickly flag a paper, data set, news article, etc. when I see it. The key here is being able to grab anything and everything I see that might be relevant to past, present, or future work.
+
+**A robust centralized organization** - I need a pretty robust system for organizing resources if I'm going to be able to find them when they're needed. This is especially true for things that are relevant (or might be relevant) for future projects. I've found that it's also really important that these systems be 'centralized' (i.e. - one collection of resources accessed for multiple projects, rather than an individual, independent collection for each project).
+
+**Easy annotation** - I know that I am really vulnerable to the [collector's fallacy](https://zettelkasten.de/posts/collectors-fallacy/) (the notion that gathering information is the same as learning the information). My system needs to have a pretty streamlined way to read and annotate papers - the more steps involved, the less likely I am to follow through on the reading. I also want this effort to "pay off", and so I should be able to easily find the notes that I took if I wanted to return to a paper I've already read, rather than having to re-read the entire paper over again.
+
+**Making connections across resources** - Some of the most interesting ideas stem from connections between two seemingly unrelated topics. I like my workflow to not only allow for those types of connections, but to promote them. I pull heavily from the [Zettelkasten](https://zettelkasten.de/posts/overview/) method here.
+
+**Simple Integration** - In the past, I've tried to work with complex workflows with many moving parts, each of which relied on their own program. I found, however, that I am too easily distracted by the 'grandeur' of these approaches to actually do any work with them, regardless of how powerful they can be when they work. My workflow therefore prioritizes "simple". However, in order to minimize the amount of manual labor required to move through the workflow, I also want the programs to integrate nicely with each other.
+
+# Programs 
+
+So what does it take to craft a workflow that sufficiently addresses these five priorities? My day-to-day work life is organized around six programs: An internet browser; Notion - a relational database interface; Zotero - a reference manager; LiquidText - a program for annotating papers; Obsidian - a markdown text editing environment; and (of course) R & RStudio. The connections between them are shown in this schematic.
+
+![](Figures/other_workflow_elements.jpg)
+
+## Notion
+
+Flagged resources are stored in a central inbox in Notion, and sorted later. There's a nice web clipper that can send web pages to the inbox (from both my phone and computer), which is what I generally use to collect resources. Once or twice a week, I'll sit down and sort through the inbox. Not everything ends up being relevant or useful, but it's quick and easy to capture these resources, and I'm more confident that I'm not missing as much by casting a broad net like this.
+
+When sorting through the inbox, data sets, tutorials, and other resources are screened out and organized in a series of topic-based pages in Notion. There's also a separate page where I keep track of preprints that look promising but haven't been published yet. This leaves published papers, which are screened for relevance, utility, interest, etc.
+
+## Zotero
+
+Papers I want to store for later use are sent to Zotero, again using a helpful web clipper tool. Unlike many of the other main reference managers (Papers, EndNote, Mendeley, etc.) Zotero is open source, and developed by a non-profit organization. There's a powerful set of tools that can be used, but I tend to just focus on the basics. Papers are added to my Zotero library, and then organized into a folders for various topics or projects. I've also found that the Better BibTex plugin is useful.
+
+## LiquidText
+
+Unfortunately, this recently changed to a paid subscription model. It's a useful program, however, that allows you to highlight and comment on text (like many other programs). The key feature for me is the ability to move selected text into a workspace alongside the document you're reading. This is really helpful for keeping track of, and making connections between, key information from throughout the document.
+
+Most importantly, there's a built-in integration between Zotero and LiquidText that makes it easy to open papers from your library, read and annotate them, and then send these annotations back to Zotero. This is important for the next step of my workflow, which revolves around synthesis and making connections.
+
+## Obsidian
+
+I mentioned above that I use a Zettelkasten approach to keeping track of what I've read. There's not enough space here to go through what that is, but it relies on being able to connect different notes in an organized way, and then expand on those connections. There's specialist software that can help do this for you, but I prefer to use a collection of simple markdown text files. Similar to how RStudio helps work with R, Obsidian helps maximize what you can do with these markdown files.
+
+There's a nice integration between Obsidian and Zotero, which allows you to open notes for each of the papers in your library. See [here](https://github.com/hans/obsidian-citation-plugin) for that process. You can take your notes from the LiquidText annotations and quickly [move them to markdown notes](https://www.zotero.org/support/pdf_reader) which makes it easy to move them into Obsidian where they can be synthesized and connected with other notes already in your connection. Because all notes for all projects are kept in the same place, these connections are often across topic boundaries, and can provide fuel for additional ideas down the road.
+
+I also use Obsidian to organize a digital lab notebook. The ability to use templates to format notes makes things like setting up experiments, recording the health of cultures, and keeping track of daily activities a little easier. And because it uses markdown files, you don't have to worry about not being able to access data across systems.
+
+# Integrating into the project folder 
+
+All of what's described above (the Notion inbox, Zotero library, and collection of notes) are centralized - there's only one of each that is used across all of my projects. When it comes time to drill down into a specific project, though, there are no barriers to integration between the centralized resources and the project folder, whether it's citing papers from the central Zotero library in one of your .Rmd files, or pulling from your collection of notes to help flesh out an introduction section.

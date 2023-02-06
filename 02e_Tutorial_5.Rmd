@@ -17,10 +17,11 @@ One of the best parts of a project is being able to finally share the results of
 
 # Markdown
 
-After investing time and effort in learning the R coding language, you probably don't want to hear "time to learn another language". Before you close this tutorial though, let me assure you that Markdown is not only simple, but extremely powerful when used with R analyses. Markdown is a simple "markup" language used to format documents. R Markdown integrates R code within this formatting framework, allowing you to more efficiently integrate code, visualizations, and written reports. You might imagine that this would be useful for more than just written reports, and indeed, R Markdown can be used to create a wide variety of outputs, including presentation slides and web pages. 
+After investing time and effort in learning the R coding language, you probably don't want to hear "time to learn another language". Before you close this tutorial though, let me assure you that Markdown is not only simple, but extremely powerful when used with R analyses. Markdown is a simple "markup" language used to format documents. R Markdown integrates R code within this formatting framework, allowing you to more efficiently integrate code, visualizations, and written reports. You might imagine that this would be useful for more than just written reports, and indeed, R Markdown can be used to create a wide variety of outputs, including presentation slides and web pages.
 
 ## Quarto
-R Markdown files are fairly specific - it's assumed that the code you integrate into the files is R code. As projects become increasingly multi-lingual though, the ability to run code from other languages (e.g. Python) in these reports becomes increasingly useful. Recently, a new markdown publishing system called [Quarto](https://quarto.org) has provided this capacity. Along with some refined aesthetic capabilities, the ability to run code from languages other than R makes this system worth checking out. Similar to R Markdown, Quarto docs can be used to create a wide range of produces. The website these tutorials are hosted on, for example, were created using Quarto.
+
+R Markdown files are fairly specific - it's assumed that the code you integrate into the files is R code. As projects become increasingly multi-lingual though, the ability to run code from other languages (e.g. Python) in these reports becomes increasingly useful. Recently, a new markdown publishing system called [Quarto](https://quarto.org) has provided this capacity. Along with some refined aesthetic capabilities, the ability to run code from languages other than R makes this system worth checking out. Similar to R Markdown, Quarto docs can be used to create a wide range of produces. The website these tutorials are hosted on, for example, was created using Quarto.
 
 # Setting up your R Markdown
 
@@ -66,7 +67,7 @@ By including the R code directly in the text like that, the information on the t
 
 STILL BEING DEVELOPED
 
-## Word Documents 
+## Word Documents
 
 STILL BEING DEVELOPED
 
@@ -115,7 +116,8 @@ datatable(table_data, rownames = FALSE, filter="top",
 
 ```
 
-These tutorials have covered the basics of how R can be used to analyze data, starting with the structure of data, data carpentry, and simple visualizations. We've also covered how R and markdown documents are integrated to help streamline the process of creating rich, informative summaries and reports. These tutorials should provide a firm foundation for you to work from as you begin to analyze your own data. Remember, this is just the beginning of what you can do in R. Hopefully these basic skills will help as you begin to explore the rest of R's capabilities on your own though. 
+These tutorials have covered the basics of how R can be used to analyze data, starting with the structure of data, data carpentry, and simple visualizations. We've also covered how R and markdown documents are integrated to help streamline the process of creating rich, informative summaries and reports. These tutorials should provide a firm foundation for you to work from as you begin to analyze your own data. Remember, this is just the beginning of what you can do in R. Hopefully these basic skills will help as you begin to explore the rest of R's capabilities on your own though.
 
 # Making your own contributions
-As you work on further developing your R skills, you might come across topics that would be useful to expand on or include in these tutorials. Here is a great opportunity for you to contribute to the tutorials. The website is hosted on GitHub, just like the data analytic projects we work on, and you should be able to suggest changes using the same pull request approach we've discussed elsewhere on this site. 
+
+As you work on further developing your R skills, you might come across topics that would be useful to expand on or include in these tutorials. Here is a great opportunity for you to contribute to the tutorials. The website is hosted on GitHub, just like the data analytic projects we work on, and you should be able to suggest changes using the same pull request approach we've discussed elsewhere on this site.

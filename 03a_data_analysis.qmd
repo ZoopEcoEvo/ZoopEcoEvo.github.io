@@ -8,4 +8,4 @@ In order to balance the need to retain the raw data and also reduce run times, d
 
 # Splitting Scripts
 
-The same principle can be applied to your data processing scripts; if you've got several different analyses that go into processing your data, and one is really long and computationally intensive, you can split the different processing steps into separate scripts. Once you modify the controller script, you can pick and choose when each processing step should be run.
+The same principle can be applied to your data processing scripts; if you've got several different analyses that go into processing your data, and one is really long and computationally intensive, you can split the different processing steps into separate scripts. Once you modify the controller script, you can pick and choose when each processing step should be run. The approach you use should be tailored to the needs of the project - not all projects require / would benefit from the added complexity of splitting scripts.
