@@ -20,10 +20,18 @@ THIS TUTORIAL STILL BEING DEVELOPED
 
 # Pipes
 
+# Select
+
+# Filter
+
+# Group
+
 # Mutate
 
 # Summarize
 
-# Grouping
+# Pivot
 
-# Pivots
+# Bind
+
+# Iterate
