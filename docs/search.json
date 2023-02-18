@@ -144,7 +144,7 @@
     "href": "02d_Tutorial_4.html",
     "title": "Part 4 - TidyVerse",
     "section": "",
-    "text": "THIS TUTORIAL STILL BEING DEVELOPED\n\nPrinciple behind TidyVerse (https://teachdatascience.com/tidyverse/)\n\n\nWorkflow\n # Tidy Data\n\n\nPipes\n\n\nMutate\n\n\nSummarize\n\n\nGrouping\n\n\nPivots"
+    "text": "THIS TUTORIAL STILL BEING DEVELOPED\n\nPrinciple behind TidyVerse (https://teachdatascience.com/tidyverse/)\n\n\nWorkflow\n # Tidy Data\n\n\nPipes\n\n\nSelect\n\n\nFilter\n\n\nGroup\n\n\nMutate\n\n\nSummarize\n\n\nPivot\n\n\nBind\n\n\nIterate"
   },
   {
     "objectID": "02b_Tutorial_2.html",
