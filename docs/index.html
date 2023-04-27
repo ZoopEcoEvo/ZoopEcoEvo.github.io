@@ -161,7 +161,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p>You should already be added to the <a href="https://github.com/ZoopEcoEvo">GitHub organization</a> as a member, but if not, remind me.</p></li>
 <li><p>Install <a href="https://posit.co/download/rstudio-desktop/">R and RStudio</a>.</p></li>
 <li><p>Make sure you have <a href="https://git-scm.com">git</a> installed on your local machine by this point. There are some helpful instructions <a href="https://happygitwithr.com/install-git.html">here</a> if needed.</p></li>
-<li><p>Make sure you’ve got the connections between Git, GitHub, and RStudio worked out. See <a href="https://happygitwithr.com/connect-intro.html">here</a> for a nice walk-through. We will generally use HTTPS when working with GitHub in RStudio.</p></li>
+<li><p>Make sure you’ve got the connections between Git, GitHub, and RStudio worked out. Open your command line (either via terminal or through the terminal window in RStudio).</p>
+<ul>
+<li>Input the following two lines of code, replacing the account info as needed
+<ul>
+<li>git config –global user.name “your GitHub account name”<br>
+</li>
+<li>git config –global user.email “GitHubEmail@something.com”</li>
+</ul></li>
+<li>See <a href="https://happygitwithr.com/connect-intro.html">here</a> for a much more detailed walk-through of other approaches if you’re interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow.</li>
+</ul></li>
 <li><p>It’s a good idea to have a basic familiarity with the terminology of Git and GitHub before you really dive in. For example, you should know what “pull”, “commit”, “push”, and “branch” mean in the context of a GitHub repo. See:</p>
 <ul>
 <li><p><a href="https://github.com/git-guides">Here</a> for the GitHub documentation, including separate pages for <a href="https://github.com/git-guides/git-commit">commits</a>, <a href="https://github.com/git-guides/git-pull">pulling</a>, and <a href="https://github.com/git-guides/git-push">pushing</a>. Note that while these pages assume you’ll be working with Git in the command line, rather than RStudio, the general descriptions still apply.</p></li>
