@@ -24,7 +24,11 @@ This workflow tends to "just work" once everything is set up and you get familia
 
 -   Make sure you have [git](https://git-scm.com) installed on your local machine by this point. There are some helpful instructions [here](https://happygitwithr.com/install-git.html) if needed.
 
--   Make sure you've got the connections between Git, GitHub, and RStudio worked out. See [here](https://happygitwithr.com/connect-intro.html) for a nice walk-through. We will generally use HTTPS when working with GitHub in RStudio.
+-   Make sure you've got the connections between Git, GitHub, and RStudio worked out. Open your command line (either via terminal or through the terminal window in RStudio).  
+    -   Input the following two lines of code, replacing the account info as needed
+        -   git config –global user.name “your GitHub account name”                                                     
+        -   git config –global user.email “GitHubEmail@something.com”
+    -   See [here](https://happygitwithr.com/connect-intro.html) for a much more detailed walk-through of other approaches if you're interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow. 
 
 -   It's a good idea to have a basic familiarity with the terminology of Git and GitHub before you really dive in. For example, you should know what "pull", "commit", "push", and "branch" mean in the context of a GitHub repo. See:
 
