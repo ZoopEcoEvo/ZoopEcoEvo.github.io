@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Project Setup</h1>
 <p>Typically, we’ll work together to design a project from background justification to experimental design (always feel free to come to me with new project ideas at any stage though!). When setting up a project, we’ll follow a <strong>GitHub first, RProject second</strong> approach, meaning the first thing we’ll do is start the GitHub repo, and then we’ll bring that down onto your computer. I will set up a repo for the project on GitHub as part of the <a href="https://github.com/ZoopEcoEvo">ZoopEcoEvo</a> organization. The main benefits of this are that:</p>
 <ol type="1">
-<li>The project_template repo accessible as part of this organization includes a pre-determined directory structure, appropriate file paths, .Rmd YAMLs, etc. to help minimize how much set-up time is required from you.</li>
+<li>The project_template repo that’s accessible as part of this organization includes a pre-determined directory structure, appropriate file paths, .Rmd YAMLs, etc. to help minimize how much set-up time is required from you. The added benefit of using a consistent structure like this is that projects from our group should have a similar look and “feel” about them, making it easier to learn from, expand on, and integrate across projects.</li>
 <li>This will keep all projects in a central location to make it easier to find relevant code and data.</li>
 <li>It can act as a ‘directory’ of sorts; the list of members are great people to go to when you have questions or ideas!</li>
 </ol>
@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </div></div><ol type="1">
-<li>Copy the site path by clicking the green “&lt; &gt; Code” button in the top right corner of the repo structure.</li>
+<li>Find the site path by clicking the green “&lt; &gt; Code” button in the top right corner of the repo structure.</li>
 <li>Typically, we’ll use HTTPS, so make sure this option is selected.</li>
 <li>The link can be copied by clicking the overlapping squares icon to the right of the text.</li>
 <li>Open RStudio and make a new project. <strong>Select version control</strong> (not new directory). In “Repository URL”, paste the URL for the GitHub repository that you copied above.
@@ -180,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Make sure that you keep your project folders organized on your local machine - I recommend having a single directory called “Lab_Projects” or something similar that you use to store all project folders.</li>
 </ul></li>
 </ol>
-<p>You’ve now got a copy of the repo downloaded onto your local machine, which is linked to GitHub. We’ll discuss this more in other sections, but just to note it here: the main branch of every project is <strong>read only</strong> (i.e.&nbsp;- you likely won’t be able to directly modify the content). This is because the main branch represents the official “up to date” record of your project. To make changes, you’ll do all active development of the project on a separate branch and then merge this into the main branch. This adds a little complexity to the workflow, but means that you can freely explore any direction without worrying about losing progress you’ve already made; you can always just restore to the most recent stable version.</p>
+<p>You’ve now got a copy of the repo downloaded onto your local machine, which is linked to GitHub. This allows you to keep track of changes made to project files, sync the project files across computers, share data and code with collaborators, and more. However, this also means that you’ll want to be conscious about what the repo looks like, as it’s a public representation of your work. The main branch should therefore represent the official “up to date” record of your project. Luckily, Git has a built in way to balance the need for an official version and providing a space for active development. We’ll discuss this more in other sections, but just to note it here: the main branch of every project is <strong>read only</strong> (i.e.&nbsp;- you likely won’t be able to directly modify the content). To make changes, you’ll do all active development of the project on a separate branch and then merge this into the main branch when you finish major tasks. This adds a little complexity to the workflow, but means that you can freely explore any direction without worrying about losing progress you’ve already made; you can always just restore to the most recent stable version.</p>
 </section>
 </section>
 <section id="naming-files" class="level1">

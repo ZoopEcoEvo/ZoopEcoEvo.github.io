@@ -2,7 +2,7 @@
 title: "Intro to the Work Flow"
 ---
 
-In general, operating in academia means projects will be geared towards eventual publication. Our goal is not just to share results, however, but to help people understand the analyses we did. All publications from our group will therefore include some way of accessing the associated data and scripts. However, this gets us only partway towards our goal of **replicable** and **understandable** analyses. Project materials need to be well organized and thoroughly documented (not just "accessible") in order for other people to follow what was done. This will also help other lab members, if at some point someone wants to follow up on your project, expand the scope of data you collected, or apply similar analyses to their data sets. This goal of making your work accessible, replicable, and understandable shapes the workflow I will ask you to use.
+In general, operating in academia means projects will be geared towards eventual publication. Our goal is not just to share results, however, but to help people understand the analyses we did. All publications from our group will therefore include some way of accessing the associated data and scripts. However, this still gets us only partway towards our goal of **replicable** and **understandable** analyses. Project materials need to be well organized and thoroughly documented (not just "accessible") in order for other people to follow what was done. This will also help other lab members, if at some point someone wants to follow up on your project, expand the scope of data you collected, or apply similar analyses to their data sets. This goal of making your work accessible, replicable, and understandable shapes the workflow I will ask you to use.
 
 # Project Folders
 
@@ -24,11 +24,12 @@ This workflow tends to "just work" once everything is set up and you get familia
 
 -   Make sure you have [git](https://git-scm.com) installed on your local machine by this point. There are some helpful instructions [here](https://happygitwithr.com/install-git.html) if needed.
 
--   Make sure you've got the connections between Git, GitHub, and RStudio worked out. Open your command line (either via terminal or through the terminal window in RStudio).  
+-   Make sure you've got the connections between Git, GitHub, and RStudio worked out. Open your command line (either via terminal or through the terminal window in RStudio).
+
     -   Input the following two lines of code, replacing the account info as needed
-        -   git config –global user.name “your GitHub account name”                                                     
-        -   git config –global user.email “GitHubEmail@something.com”
-    -   See [here](https://happygitwithr.com/connect-intro.html) for a much more detailed walk-through of other approaches if you're interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow. 
+        -   git config --global user.name "your GitHub account name"\
+        -   git config --global user.email "GitHubEmail\@something.com"
+    -   See [here](https://happygitwithr.com/connect-intro.html) for a much more detailed walk-through of other approaches if you're interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow.
 
 -   It's a good idea to have a basic familiarity with the terminology of Git and GitHub before you really dive in. For example, you should know what "pull", "commit", "push", and "branch" mean in the context of a GitHub repo. See:
 
@@ -38,7 +39,7 @@ This workflow tends to "just work" once everything is set up and you get familia
 
     -   [Here](https://www.youtube.com/watch?v=eWxxfttcMts&t=82s) for a quick video introduction (starts at \~1:20 where the description of Git starts).
 
-    -   [Here](https://www.youtube.com/watch?v=KjLycV1IWqc) for a nice visual representation of some of the basis Git/GitHub actions.
+    -   [Here](https://www.youtube.com/watch?v=KjLycV1IWqc) for a nice visual representation of some of the basic Git/GitHub actions.
 
     -   [Here](https://youtu.be/sxErFMF7BJY) for a walk-through of a fairly similar Git/GitHub/RStudio workflow. There's some differences (or things you won't have to worry about because I will take care of it for you when we set your project up), but the sections on 'Creating an RStudio project from version control' and 'Working with Git from within RStudio' are definitely relevant.
 
