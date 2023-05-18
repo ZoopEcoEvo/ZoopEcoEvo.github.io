@@ -21,15 +21,15 @@ RStudio can be downloaded [**here**](https://rstudio.com/products/rstudio/). Dow
 
 You will need both installed before continuing with these activities. This tutorial will provide both examples of lines of code and their output, as well as prompts for you to write code yourself. It will be helpful to "code along" and replicate all of the provided examples as we go. I guarantee you will get more out of these tutorials if you take this more active approach - just reading through is not going to help develop skills.
 
-## The RStudio Workspace
+## The RStudio Work Space
 
 ![](Figures/studio_window.png)
 
-An RStudio window has four major components. The Console window, in the lower left quadrant, is used for the direct input of commands. This is a direct link to your computer and R functionality. It can be used for testing code or running quick calculations. It's also useful for examining the contents of data structures. It's not very efficient for creating and storing variables and commands though. For this, we will rely on a document called a 'script' (shown here in the top left quadrant) Make sure you have a new script open as we move through these exercises (you can create a blank script using the 'new file' icon in the top left corner of R Studio). The ability to open, edit, and run R scripts in R Studio is one of the biggest advantages of using the GUI. These scripts are used to write and record commands, providing a written record of everything you do to get from raw data to final product. This in turn makes your analyses easier to repeat, especially when paired with the project folder structure.
+An RStudio window has four major components. The Console window, in the lower left quadrant, is used for the direct input of commands. This is a direct link to your computer and R functionality. It can be used for testing code or running quick calculations. It's also useful for examining the contents of data structures. It's not very efficient for creating and storing variables and commands though. For this, we will rely on a document called a 'script' (shown here in the top left quadrant). Make sure you have a new script open as we move through these exercises (you can create a blank script using the 'new file' icon in the top left corner of R Studio). The ability to open, edit, and run R scripts in R Studio is one of the biggest advantages of using the GUI. These scripts are used to write and record commands, providing a written record of everything you do to get from raw data to final product. This in turn makes your analyses easier to repeat, especially when paired with the project folder structure.
 
 The R Studio environment also provides easy access to other important details. The Files, Plots, Packages, and the Help windows share a space in R Studio (lower right quadrant). The Files window shows you what's in your working directory, and can be used to access data and navigate to other scripts. The Plots window is where graphical outputs will usually show up. The range of things you can do with R is greatly expanded by packages (essentially, your R toolbox). These contain functions for diverse applications, and can be used to customize your R experience. The Packages window shows which packages have been installed, and which are currently active. This area can also be used to find and install new packages. We will install several important packages later on. The Help window is relatively self-explanatory. Functions and packages typically come with documentation, which can be accessed via the Help window. You can use the search bar in that window, or simply type '?function_name( )' into the console to pull this documentation up.
 
-The final area of an R Studio workspace contains the Environment and History windows. Your Environment window will show you all of the variables and data objects you've generated. The History window records all of your actions. This can be useful if you want to trace your steps backwards through an analysis to confirm what you did or identify an issue. Other important tabs might show up here as well, depending on what kind of files you're accessing. The most relevant to our workflow is the Git tab, which allows you to work with version control from RStudio.
+The final area of an R Studio workspace contains the Environment and History windows. Your Environment window will show you all of the variables and data objects you've generated. The History window records all of your actions. This can be useful if you want to trace your steps backwards through an analysis to confirm what you did or identify an issue. Other important tabs might show up here as well, depending on what kind of files you're accessing. The most relevant to our workflow is the Git tab, which allows you to work with version control from within RStudio.
 
 The arrangement of these windows and general appearance of the GUI is customizable in Preferences/Settings.
 
@@ -49,7 +49,6 @@ R recognizes several types of commands. Elementary commands are fairly intuitive
 
 ```{r collapse = TRUE}
 12 * 2  
-
 ```
 
 Note that input of an expression without assignment (using an '=') prints the result in the console window, but does not store the value (nothing shows up in the Environment window). In order to store values, you need to assign them to a variable. A variable can be single characters (ex - A, B, X, Y) or strings of characters (ex - key_values, LD50, data.set). Variable names cannot, however, start with a number. We'll go over assignment to variables in greater detail in a later section, but for now try assigning a few variables.
@@ -66,7 +65,7 @@ variable = 3 + 5
 print(variable)
 ```
 
-Note: In the above examples, we use print( ) to see the content of a variable. You can also see what a variable just by running the variable by itself, but it's a good idea to use a command like print( ) so you know that you didn't lose any code from that line.
+Note: In the above examples, we use print( ) to see the content of a variable. You can also see what a variable contains just by running the variable by itself, but it's a good idea to use a command like print( ) while getting familiar with R to help keep track of what you're doing.
 
 ```{r}
 print(variable)
@@ -75,7 +74,7 @@ print(variable)
 variable 
 ```
 
-You'll also notice that the value 'variable' is storing changes between those two practice lines - by re-assigning a value to 'variable' you overwote the previous value. This cannot be undone. In order to restore the previous value, you would have to re-run whatever code resulted in the original assignment. Keep this in mind as you code. Re-assigning variable identity is a common source of problems!
+You'll also notice that we used the same name 'variable' in both of those practice lines - by re-assigning a value to 'variable' you overwote the previous value. This cannot be undone. In order to restore the previous value, you would have to re-run whatever code resulted in the original assignment. Keep this in mind as you code. Re-assigning variable identity is a common source of problems!
 
 The real power of R is in the use of function commands. Functions tell R to do a series of operations, which can include other mathematical functions (find the mean, the standard deviation, etc.), or more complex actions (estimate linear regressions, make plots, etc.). These functions follow a basic syntax of FUNCTION(parameters and values).
 
@@ -89,21 +88,23 @@ As before, when you run that line of code, the output is found in the console, b
 
 As we move through these tutorials, there is one key thing to keep in mind. This what we'll call the Golden Rule of R: **Be kind to yourself**. Towards that end, developing good coding habits early on is critical!
 
-Obviously the longer you use R, the more functions you'll come across (the collector's curve will never saturate). Keep track of particularly important or useful commands. It can be helpful to maintain a separate document with these commands or chunks of code you often use, and what they do (think of this as a personalized diction-R-y). This is something you can refer back, rather than needing to search through large volumes of old scripts for a specific line of code. Compiling and updating this document can be tedious, and whether you decide it's useful depends a lot on personal preference. You might want to keep track of just the functions that give you trouble, or that you can't ever seem to remember. You will develop a sense of what is most useful for you as you spend more time coding.
+Obviously the longer you use R, the more functions you'll come across (the collector's curve will never saturate). Keep track of particularly important or useful commands. It can be helpful to maintain a separate document with these commands or chunks of code you often use, and what they do (think of this as a personalized diction-R-y). This is something you can refer back to, rather than needing to search through large volumes of old scripts for a specific line of code. Compiling and updating this document can be tedious, and whether you decide it's useful depends a lot on personal preference. You might want to keep track of just the functions that give you trouble, or that you can't ever seem to remember. You will develop a sense of what is most useful for you as you spend more time coding.
 
-A comprehensive repository is less useful for variables and object names, as even relatively simple processes in R can generate dozens of them. Keeping track of all of them in one place would be tiresome and inefficient. You still need to keep track of what you're creating (and why) though. There are two good habits that will help with this.
+A comprehensive repository is less useful for variables and object names, as even relatively simple processes in R can generate dozens of them. Keeping track of all of them in one place would be tiresome and inefficient. That being said, you still need to keep track of what you're creating (and why). There are two good habits that will help with this.
 
 ### Naming conventions
 
-First, develop a standard naming structure for your variables. Names should be both concise and descriptive. For instance, imagine you're creating a model describing the relationship between X and Y, and want to store the model as a variable. Assigning it to a variable called 'model_describing_the_relationship_between_X\_and_Y' is fairly descriptive, but way too long. A variable called 'model' is short, but not descriptive. Variables like 'X_Y.model' are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use 'X_Y.model' in one script, use 'A_B.model' rather than 'AB_model' for the next model. These stylistic conventions are usually based on personal preference, and should be something you include in your dictionary.
+First, develop a standard naming structure for your variables. Names should be both concise and descriptive. For instance, instead of using "variable" you would probably be better off using something like "pH_levels", "species_ID", "body_size", etc. when storing data. Each of these names is relatively short, but still tells you about what's being stored. Also note that each of these variable names is (generally) lowercase, with and underscore separating words. Hyphens are also commonly used when naming variables ("pH-levels", "species-ID", "body-size"). Some people prefer to separate words using cases ("pHLevels", "SpeciesID", "BodySize"), but the examples here illustrate why I don't recommend that strategy.
 
-It's also important that variable names be relatively unique: You want to avoid using the same variable name across many different scripts. For example, using a variable called "data" to store your data in all of your scripts is an easy way to get your analyses tangled up, especially if you're jumping between different R scripts in the same session. **Values assigned to variable names are not stored in your script, but in the environment**. So, if you assign something to 'X_data' in one script, it will carry that over into any other script you open during that session. Likewise, if you re-assign 'X_data' in the second script and then go back to the first script, 'X_data' won't change back.
+The same recommendations apply in more complex situations. Imagine you're creating a model describing the relationship between two variables, X and Y, and want to store the model. Assigning it to a variable called 'model_describing_the_relationship_between_X\_and_Y' is very descriptive, but way too long. A variable called 'model' is short, but not descriptive. Variables like 'X_Y.model' are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use 'X_Y.model' in one script, use 'A_B.model' rather than 'AB_model' for the next model. These stylistic conventions are usually based on personal preference, but should be something you make conscious decisions about. It can be useful when you're first starting to include these stylistic conventions in your dictionary.
+
+In addition to being concise and descriptive, it's also important that variable names be relatively unique: You want to avoid using the same variable name across many different scripts. For example, using a variable called "data" to store your data in all of your scripts is an easy way to get your analyses tangled up, especially if you're jumping between different R scripts in the same session. **Values assigned to variable names are not stored in your script, but in the environment**. So, if you assign something to 'X_data' in one script, it will carry that over into any other script you open during that session. Likewise, if you re-assign 'X_data' in the second script and then go back to the first script, 'X_data' won't change back.
 
 Finally, remember that R is case sensitive; 'Variable' is not the same thing as 'variable' in R. Despite the scientific convention (e.g. - The 't' vs. 'T' variables for time and temperature), it's usually not a good idea to differentiate variables based solely on capitalization. Remember that the goal is to be both concise and descriptive - name your variables 'time' and 'temp', not 't' and 'T'.
 
 ### Comments
 
-The second (and more important) helpful habit is to comment on everything! While a separate document for important code can be useful for general R purposes, it will not help you remember the purpose, organization, or workflow of an individual script. For this, we mainly rely on in-script annotation. Characters following a \# are not executed by R. These are called comments, and are absolutely essential for long-term success in R. You should be able to open up an R script and know exactly what the script is supposed to do. Get into the habit of commenting on your scripts. Comment such that someone completely unfamiliar with your script could open it and know exactly what's happening in each section. Do not fall into the classic trap of thinking "this is an easy step, I'll totally remember what it's doing" because it's not and you won't. There is a fine line between under- and over-commenting on a script, however. Typically, you do not need to comment on every single line in order for a script to be interpretable. By focusing your comments on *why* something was done rather than *how* it was done, you can help readers navigate a script without overloading the document with comments.
+The second (and more important) helpful habit is to comment on everything! While a separate document for important code can be useful for general R purposes, it will not help you remember the purpose, organization, or workflow of an individual script. For this, we mainly rely on in-script annotation. Characters following a \# are not executed by R. These are called comments, and are absolutely essential for long-term success in R. You should be able to open up an R script and know exactly what the script is supposed to do. Get into the habit of commenting on your scripts. Comment such that someone completely unfamiliar with your script could open it and know exactly what's happening in each section. Beyond helping other people understand what's going on, it will help *you* remember what's going on when you open a script after a while. Do not fall into the classic trap of thinking "this is an easy step, I'll totally remember what it's doing" because it's not and you won't. There is, however, a fine line between under- and over-commenting on a script. Typically, you do not need to comment on every single line in order for a script to be interpretable. By focusing your comments on *why* something was done rather than *how* it was done, you can help readers navigate a script without overloading the document with comments.
 
 Developing your own individual coding style is part of learning R, and will most likely help make it more intuitive and enjoyable. However, it will save you a lot of time and energy (and tears) if you make sure that your individual style is built on a foundation of good habits. Name data objects in consistent ways. Capitalize names in a consistent way within and across all your scripts. Use the same indentation strategies. Comment on the steps as you go. Developing smart coding habits early on is much easier than trying to break bad habits later.
 
@@ -138,6 +139,8 @@ print(beta)
 alpha = "x"
 print(alpha)
 ```
+
+There are several different data 'structures' that you'll work with in R. These different structures are typically distinguished based on the number of dimensions they contain.
 
 ## Vectors
 
@@ -289,7 +292,7 @@ One way to do this uses sort( ), length( ), and some creative application of a s
 
 ## Data Classes
 
-Up to this point we've mostly dealt with data comprised of numbers or characters. R handles several different types of data though, which is one reason why it's such a powerful tool.
+Up to this point we've mostly dealt with data comprised of numbers or characters. R handles several different types of data though, which is one reason why it's such a powerful tool. Before we move onto other types of data structures, we'll cover the different types of data R works with.
 
 ### Integers, Numerics, and Characters
 
@@ -456,7 +459,7 @@ class(C)
 
 ## Multi-Dimensional Data Structures
 
-Like vectors (one-dimensional structures defined by a length), the other common data structures can be defined by different numbers of dimensions. A matrix is a two-dimensional object (defined by a length and a width, aka some number of rows and columns, respectively). An array is an n-dimensional object. For example, a three-dimensional array is commonly thought of as a cube, defined by some number of rows and columns replicated across some number of sheets.
+Like vectors (one-dimensional structures defined by a length), the other common data structures can be defined by different numbers of dimensions. A **matrix is a two-dimensional object** (defined by a length and a width, aka some number of rows and columns, respectively). An **array is an n-dimensional object**. For example, a three-dimensional array is commonly thought of as a cube, defined by some number of rows and columns replicated across some number of sheets.
 
 When creating an matrix or array, you need to specify the dimensions. Matrices are formed using the function matrix(nrow = X, ncol = Y). Arrays follow a slightly different format: array(dim = c(rows, columns, sheets)).
 

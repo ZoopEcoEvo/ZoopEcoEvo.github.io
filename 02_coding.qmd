@@ -10,7 +10,7 @@ As you work through these tutorials, keep in mind that the goal is to provide an
 
 Becoming comfortable working with R takes time. These tutorials are just a first step in that direction. There are two specific learning objectives:
 
--   Learning Objective 1 - Achieve a level of understanding to be able to use Google to answer questions / overcome obstacles in R.
+-   Learning Objective 1 - Achieve a level of understanding to be able to use Google to answer questions / overcome obstacles in R. This requires that you:
     -   Be able to identify your issue
     -   Know what to look for / understand what you find on Google\
 -   Learning Objective 2 - Be able to modify available R scripts to analyze and visualize data sets.
