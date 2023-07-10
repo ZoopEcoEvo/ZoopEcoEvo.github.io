@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -140,90 +111,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Project Workflow</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_git_and_R.html">
+    <a class="nav-link" href="./01_git_and_R.html" rel="" target="">
  <span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./02_coding.html" aria-current="page">
+    <a class="nav-link active" href="./02_coding.html" rel="" target="" aria-current="page">
  <span class="menu-text">Coding in R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./03_project_dev.html">
+    <a class="nav-link" href="./03_project_dev.html" rel="" target="">
  <span class="menu-text">Project Development</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Part 1 - R Basics</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02a_Tutorial_1.html">Part 1 - R Basics</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_coding.html" class="sidebar-item-text sidebar-link">Coding in R</a>
+  <a href="./02_coding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02a_Tutorial_1.html" class="sidebar-item-text sidebar-link active">Part 1 - R Basics</a>
+  <a href="./02a_Tutorial_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Part 1 - R Basics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02b_Tutorial_2.html" class="sidebar-item-text sidebar-link">Part 2 - More Data Manipulation</a>
+  <a href="./02b_Tutorial_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 2 - More Data Manipulation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02c_Tutorial_3.html" class="sidebar-item-text sidebar-link">Part 3 - ggPlot and Data Visualization</a>
+  <a href="./02c_Tutorial_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 3 - ggPlot and Data Visualization</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02d_Tutorial_4.html" class="sidebar-item-text sidebar-link">Part 4 - TidyVerse</a>
+  <a href="./02d_Tutorial_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 4 - TidyVerse</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02e_Tutorial_5.html" class="sidebar-item-text sidebar-link">Part 5 - R Markdown</a>
+  <a href="./02e_Tutorial_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 5 - R Markdown</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02f_code_style.html" class="sidebar-item-text sidebar-link">Notes on Coding Style</a>
+  <a href="./02f_code_style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notes on Coding Style</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -232,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#introduction-to-the-r-environment-syntax" id="toc-introduction-to-the-r-environment-syntax" class="nav-link active" data-scroll-target="#introduction-to-the-r-environment-syntax">Introduction to the R Environment &amp; Syntax</a>
   <ul class="collapse">
-  <li><a href="#the-rstudio-workspace" id="toc-the-rstudio-workspace" class="nav-link" data-scroll-target="#the-rstudio-workspace">The RStudio Workspace</a></li>
+  <li><a href="#the-rstudio-work-space" id="toc-the-rstudio-work-space" class="nav-link" data-scroll-target="#the-rstudio-work-space">The RStudio Work Space</a></li>
   <li><a href="#basics-of-r-syntax---here-be-dragons" id="toc-basics-of-r-syntax---here-be-dragons" class="nav-link" data-scroll-target="#basics-of-r-syntax---here-be-dragons">Basics of R syntax - Here be dRagons</a></li>
   <li><a href="#golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them" id="toc-golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them" class="nav-link" data-scroll-target="#golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them">Golden Rule of R - Do unto yourself as others would have you do unto them</a>
   <ul class="collapse">
@@ -275,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Part 1 - R Basics</h1>
+<h1 class="title">Part 1 - R Basics</h1>
 </div>
 
 
@@ -297,12 +280,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R can be downloaded <a href="https://cloud.r-project.org"><strong>here</strong></a>.<br>
 RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><strong>here</strong></a>. Download the open-source Desktop version.</p>
 <p>You will need both installed before continuing with these activities. This tutorial will provide both examples of lines of code and their output, as well as prompts for you to write code yourself. It will be helpful to “code along” and replicate all of the provided examples as we go. I guarantee you will get more out of these tutorials if you take this more active approach - just reading through is not going to help develop skills.</p>
-<section id="the-rstudio-workspace" class="level2">
-<h2 class="anchored" data-anchor-id="the-rstudio-workspace">The RStudio Workspace</h2>
+<section id="the-rstudio-work-space" class="level2">
+<h2 class="anchored" data-anchor-id="the-rstudio-work-space">The RStudio Work Space</h2>
 <p><img src="Figures/studio_window.png" class="img-fluid"></p>
-<p>An RStudio window has four major components. The Console window, in the lower left quadrant, is used for the direct input of commands. This is a direct link to your computer and R functionality. It can be used for testing code or running quick calculations. It’s also useful for examining the contents of data structures. It’s not very efficient for creating and storing variables and commands though. For this, we will rely on a document called a ‘script’ (shown here in the top left quadrant) Make sure you have a new script open as we move through these exercises (you can create a blank script using the ‘new file’ icon in the top left corner of R Studio). The ability to open, edit, and run R scripts in R Studio is one of the biggest advantages of using the GUI. These scripts are used to write and record commands, providing a written record of everything you do to get from raw data to final product. This in turn makes your analyses easier to repeat, especially when paired with the project folder structure.</p>
+<p>An RStudio window has four major components. The Console window, in the lower left quadrant, is used for the direct input of commands. This is a direct link to your computer and R functionality. It can be used for testing code or running quick calculations. It’s also useful for examining the contents of data structures. It’s not very efficient for creating and storing variables and commands though. For this, we will rely on a document called a ‘script’ (shown here in the top left quadrant). Make sure you have a new script open as we move through these exercises (you can create a blank script using the ‘new file’ icon in the top left corner of R Studio). The ability to open, edit, and run R scripts in R Studio is one of the biggest advantages of using the GUI. These scripts are used to write and record commands, providing a written record of everything you do to get from raw data to final product. This in turn makes your analyses easier to repeat, especially when paired with the project folder structure.</p>
 <p>The R Studio environment also provides easy access to other important details. The Files, Plots, Packages, and the Help windows share a space in R Studio (lower right quadrant). The Files window shows you what’s in your working directory, and can be used to access data and navigate to other scripts. The Plots window is where graphical outputs will usually show up. The range of things you can do with R is greatly expanded by packages (essentially, your R toolbox). These contain functions for diverse applications, and can be used to customize your R experience. The Packages window shows which packages have been installed, and which are currently active. This area can also be used to find and install new packages. We will install several important packages later on. The Help window is relatively self-explanatory. Functions and packages typically come with documentation, which can be accessed via the Help window. You can use the search bar in that window, or simply type ‘?function_name( )’ into the console to pull this documentation up.</p>
-<p>The final area of an R Studio workspace contains the Environment and History windows. Your Environment window will show you all of the variables and data objects you’ve generated. The History window records all of your actions. This can be useful if you want to trace your steps backwards through an analysis to confirm what you did or identify an issue. Other important tabs might show up here as well, depending on what kind of files you’re accessing. The most relevant to our workflow is the Git tab, which allows you to work with version control from RStudio.</p>
+<p>The final area of an R Studio workspace contains the Environment and History windows. Your Environment window will show you all of the variables and data objects you’ve generated. The History window records all of your actions. This can be useful if you want to trace your steps backwards through an analysis to confirm what you did or identify an issue. Other important tabs might show up here as well, depending on what kind of files you’re accessing. The most relevant to our workflow is the Git tab, which allows you to work with version control from within RStudio.</p>
 <p>The arrangement of these windows and general appearance of the GUI is customizable in Preferences/Settings.</p>
 </section>
 <section id="basics-of-r-syntax---here-be-dragons" class="level2">
@@ -334,7 +317,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(variable)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note: In the above examples, we use print( ) to see the content of a variable. You can also see what a variable just by running the variable by itself, but it’s a good idea to use a command like print( ) so you know that you didn’t lose any code from that line.</p>
+<p>Note: In the above examples, we use print( ) to see the content of a variable. You can also see what a variable contains just by running the variable by itself, but it’s a good idea to use a command like print( ) while getting familiar with R to help keep track of what you’re doing.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(variable)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span>
@@ -343,7 +326,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>variable </span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You’ll also notice that the value ‘variable’ is storing changes between those two practice lines - by re-assigning a value to ‘variable’ you overwote the previous value. This cannot be undone. In order to restore the previous value, you would have to re-run whatever code resulted in the original assignment. Keep this in mind as you code. Re-assigning variable identity is a common source of problems!</p>
+<p>You’ll also notice that we used the same name ‘variable’ in both of those practice lines - by re-assigning a value to ‘variable’ you overwote the previous value. This cannot be undone. In order to restore the previous value, you would have to re-run whatever code resulted in the original assignment. Keep this in mind as you code. Re-assigning variable identity is a common source of problems!</p>
 <p>The real power of R is in the use of function commands. Functions tell R to do a series of operations, which can include other mathematical functions (find the mean, the standard deviation, etc.), or more complex actions (estimate linear regressions, make plots, etc.). These functions follow a basic syntax of FUNCTION(parameters and values).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">9</span>))</span>
@@ -354,17 +337,18 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <section id="golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them" class="level2">
 <h2 class="anchored" data-anchor-id="golden-rule-of-r---do-unto-yourself-as-others-would-have-you-do-unto-them">Golden Rule of R - Do unto yourself as others would have you do unto them</h2>
 <p>As we move through these tutorials, there is one key thing to keep in mind. This what we’ll call the Golden Rule of R: <strong>Be kind to yourself</strong>. Towards that end, developing good coding habits early on is critical!</p>
-<p>Obviously the longer you use R, the more functions you’ll come across (the collector’s curve will never saturate). Keep track of particularly important or useful commands. It can be helpful to maintain a separate document with these commands or chunks of code you often use, and what they do (think of this as a personalized diction-R-y). This is something you can refer back, rather than needing to search through large volumes of old scripts for a specific line of code. Compiling and updating this document can be tedious, and whether you decide it’s useful depends a lot on personal preference. You might want to keep track of just the functions that give you trouble, or that you can’t ever seem to remember. You will develop a sense of what is most useful for you as you spend more time coding.</p>
-<p>A comprehensive repository is less useful for variables and object names, as even relatively simple processes in R can generate dozens of them. Keeping track of all of them in one place would be tiresome and inefficient. You still need to keep track of what you’re creating (and why) though. There are two good habits that will help with this.</p>
+<p>Obviously the longer you use R, the more functions you’ll come across (the collector’s curve will never saturate). Keep track of particularly important or useful commands. It can be helpful to maintain a separate document with these commands or chunks of code you often use, and what they do (think of this as a personalized diction-R-y). This is something you can refer back to, rather than needing to search through large volumes of old scripts for a specific line of code. Compiling and updating this document can be tedious, and whether you decide it’s useful depends a lot on personal preference. You might want to keep track of just the functions that give you trouble, or that you can’t ever seem to remember. You will develop a sense of what is most useful for you as you spend more time coding.</p>
+<p>A comprehensive repository is less useful for variables and object names, as even relatively simple processes in R can generate dozens of them. Keeping track of all of them in one place would be tiresome and inefficient. That being said, you still need to keep track of what you’re creating (and why). There are two good habits that will help with this.</p>
 <section id="naming-conventions" class="level3">
 <h3 class="anchored" data-anchor-id="naming-conventions">Naming conventions</h3>
-<p>First, develop a standard naming structure for your variables. Names should be both concise and descriptive. For instance, imagine you’re creating a model describing the relationship between X and Y, and want to store the model as a variable. Assigning it to a variable called ‘model_describing_the_relationship_between_X_and_Y’ is fairly descriptive, but way too long. A variable called ‘model’ is short, but not descriptive. Variables like ‘X_Y.model’ are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use ‘X_Y.model’ in one script, use ‘A_B.model’ rather than ‘AB_model’ for the next model. These stylistic conventions are usually based on personal preference, and should be something you include in your dictionary.</p>
-<p>It’s also important that variable names be relatively unique: You want to avoid using the same variable name across many different scripts. For example, using a variable called “data” to store your data in all of your scripts is an easy way to get your analyses tangled up, especially if you’re jumping between different R scripts in the same session. <strong>Values assigned to variable names are not stored in your script, but in the environment</strong>. So, if you assign something to ‘X_data’ in one script, it will carry that over into any other script you open during that session. Likewise, if you re-assign ‘X_data’ in the second script and then go back to the first script, ‘X_data’ won’t change back.</p>
+<p>First, develop a standard naming structure for your variables. Names should be both concise and descriptive. For instance, instead of using “variable” you would probably be better off using something like “pH_levels”, “species_ID”, “body_size”, etc. when storing data. Each of these names is relatively short, but still tells you about what’s being stored. Also note that each of these variable names is (generally) lowercase, with and underscore separating words. Hyphens are also commonly used when naming variables (“pH-levels”, “species-ID”, “body-size”). Some people prefer to separate words using cases (“pHLevels”, “SpeciesID”, “BodySize”), but the examples here illustrate why I don’t recommend that strategy.</p>
+<p>The same recommendations apply in more complex situations. Imagine you’re creating a model describing the relationship between two variables, X and Y, and want to store the model. Assigning it to a variable called ‘model_describing_the_relationship_between_X_and_Y’ is very descriptive, but way too long. A variable called ‘model’ is short, but not descriptive. Variables like ‘X_Y.model’ are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use ‘X_Y.model’ in one script, use ‘A_B.model’ rather than ‘AB_model’ for the next model. These stylistic conventions are usually based on personal preference, but should be something you make conscious decisions about. It can be useful when you’re first starting to include these stylistic conventions in your dictionary.</p>
+<p>In addition to being concise and descriptive, it’s also important that variable names be relatively unique: You want to avoid using the same variable name across many different scripts. For example, using a variable called “data” to store your data in all of your scripts is an easy way to get your analyses tangled up, especially if you’re jumping between different R scripts in the same session. <strong>Values assigned to variable names are not stored in your script, but in the environment</strong>. So, if you assign something to ‘X_data’ in one script, it will carry that over into any other script you open during that session. Likewise, if you re-assign ‘X_data’ in the second script and then go back to the first script, ‘X_data’ won’t change back.</p>
 <p>Finally, remember that R is case sensitive; ‘Variable’ is not the same thing as ‘variable’ in R. Despite the scientific convention (e.g.&nbsp;- The ‘t’ vs.&nbsp;‘T’ variables for time and temperature), it’s usually not a good idea to differentiate variables based solely on capitalization. Remember that the goal is to be both concise and descriptive - name your variables ‘time’ and ‘temp’, not ‘t’ and ‘T’.</p>
 </section>
 <section id="comments" class="level3">
 <h3 class="anchored" data-anchor-id="comments">Comments</h3>
-<p>The second (and more important) helpful habit is to comment on everything! While a separate document for important code can be useful for general R purposes, it will not help you remember the purpose, organization, or workflow of an individual script. For this, we mainly rely on in-script annotation. Characters following a # are not executed by R. These are called comments, and are absolutely essential for long-term success in R. You should be able to open up an R script and know exactly what the script is supposed to do. Get into the habit of commenting on your scripts. Comment such that someone completely unfamiliar with your script could open it and know exactly what’s happening in each section. Do not fall into the classic trap of thinking “this is an easy step, I’ll totally remember what it’s doing” because it’s not and you won’t. There is a fine line between under- and over-commenting on a script, however. Typically, you do not need to comment on every single line in order for a script to be interpretable. By focusing your comments on <em>why</em> something was done rather than <em>how</em> it was done, you can help readers navigate a script without overloading the document with comments.</p>
+<p>The second (and more important) helpful habit is to comment on everything! While a separate document for important code can be useful for general R purposes, it will not help you remember the purpose, organization, or workflow of an individual script. For this, we mainly rely on in-script annotation. Characters following a # are not executed by R. These are called comments, and are absolutely essential for long-term success in R. You should be able to open up an R script and know exactly what the script is supposed to do. Get into the habit of commenting on your scripts. Comment such that someone completely unfamiliar with your script could open it and know exactly what’s happening in each section. Beyond helping other people understand what’s going on, it will help <em>you</em> remember what’s going on when you open a script after a while. Do not fall into the classic trap of thinking “this is an easy step, I’ll totally remember what it’s doing” because it’s not and you won’t. There is, however, a fine line between under- and over-commenting on a script. Typically, you do not need to comment on every single line in order for a script to be interpretable. By focusing your comments on <em>why</em> something was done rather than <em>how</em> it was done, you can help readers navigate a script without overloading the document with comments.</p>
 <p>Developing your own individual coding style is part of learning R, and will most likely help make it more intuitive and enjoyable. However, it will save you a lot of time and energy (and tears) if you make sure that your individual style is built on a foundation of good habits. Name data objects in consistent ways. Capitalize names in a consistent way within and across all your scripts. Use the same indentation strategies. Comment on the steps as you go. Developing smart coding habits early on is much easier than trying to break bad habits later.</p>
 </section>
 </section>
@@ -401,6 +385,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(alpha)</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "x"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>There are several different data ‘structures’ that you’ll work with in R. These different structures are typically distinguished based on the number of dimensions they contain.</p>
 </section>
 <section id="vectors" class="level2">
 <h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
@@ -555,7 +540,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 </section>
 <section id="data-classes" class="level2">
 <h2 class="anchored" data-anchor-id="data-classes">Data Classes</h2>
-<p>Up to this point we’ve mostly dealt with data comprised of numbers or characters. R handles several different types of data though, which is one reason why it’s such a powerful tool.</p>
+<p>Up to this point we’ve mostly dealt with data comprised of numbers or characters. R handles several different types of data though, which is one reason why it’s such a powerful tool. Before we move onto other types of data structures, we’ll cover the different types of data R works with.</p>
 <section id="integers-numerics-and-characters" class="level3">
 <h3 class="anchored" data-anchor-id="integers-numerics-and-characters">Integers, Numerics, and Characters</h3>
 <p>Integer and Numeric data are both comprised of number values. Integers cannot have decimals while numerics can.</p>
@@ -730,7 +715,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 </section>
 <section id="multi-dimensional-data-structures" class="level2">
 <h2 class="anchored" data-anchor-id="multi-dimensional-data-structures">Multi-Dimensional Data Structures</h2>
-<p>Like vectors (one-dimensional structures defined by a length), the other common data structures can be defined by different numbers of dimensions. A matrix is a two-dimensional object (defined by a length and a width, aka some number of rows and columns, respectively). An array is an n-dimensional object. For example, a three-dimensional array is commonly thought of as a cube, defined by some number of rows and columns replicated across some number of sheets.</p>
+<p>Like vectors (one-dimensional structures defined by a length), the other common data structures can be defined by different numbers of dimensions. A <strong>matrix is a two-dimensional object</strong> (defined by a length and a width, aka some number of rows and columns, respectively). An <strong>array is an n-dimensional object</strong>. For example, a three-dimensional array is commonly thought of as a cube, defined by some number of rows and columns replicated across some number of sheets.</p>
 <p>When creating an matrix or array, you need to specify the dimensions. Matrices are formed using the function matrix(nrow = X, ncol = Y). Arrays follow a slightly different format: array(dim = c(rows, columns, sheets)).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
@@ -1183,9 +1168,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1250,6 +1249,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
