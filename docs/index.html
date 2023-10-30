@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.4.288">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -46,6 +46,11 @@ ul.task-list li input[type="checkbox"] {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -55,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -69,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./Figures/copepod_icon_dark.png" alt="" class="navbar-logo">
     </a>
@@ -105,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -124,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">Initial Setup</a></li>
   <li><a href="#general-note" id="toc-general-note" class="nav-link" data-scroll-target="#general-note">General Note</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -143,6 +149,7 @@ ul.task-list li input[type="checkbox"] {
     
   </div>
   
+
 
 </header>
 
@@ -163,16 +170,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p>You should already be added to the <a href="https://github.com/ZoopEcoEvo">GitHub organization</a> as a member, but if not, remind me.</p></li>
 <li><p>Install <a href="https://posit.co/download/rstudio-desktop/">R and RStudio</a>.</p></li>
 <li><p>Make sure you have <a href="https://git-scm.com">git</a> installed on your local machine by this point. There are some helpful instructions <a href="https://happygitwithr.com/install-git.html">here</a> if needed.</p></li>
-<li><p>Make sure you’ve got the connections between Git, GitHub, and RStudio worked out. Open your command line (either via terminal or through the terminal window in RStudio).</p>
+<li><p>Make sure you’ve got the connections between Git, GitHub, and RStudio worked out. When you first set things up, you’ll need to give RStudio ‘permission’ to integrate with your GitHub. There are two steps here:</p>
 <ul>
-<li>Input the following two lines of code, replacing the account info as needed
+<li>Go to&nbsp;<a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a> and hit "Generate token". You can choose the scope of access you want to grant. For our purposes, you should be fine so long as “repo”, “user”, and “workflow” are selected. <strong>Copy the token when it’s generated.</strong> You could also leave this window open until you’ve finished the set up, just to be safe. Head back to RStudio, and install the ‘gitcreds’ package. Once installed, call gitcreds::gitcreds_set(). When you run this function, it will prompt you to enter your token.</li>
+</ul></li>
+<li><p>Once you’ve granted RStudio access to your GitHub, you should make sure that your local version of Git has your account information. Open your command line (either via terminal or through the terminal window in RStudio). Input the following two lines of code, replacing the account info as needed</p>
 <ul>
-<li>git config –global user.name “your GitHub account name”<br>
-</li>
+<li>git config –global user.name “your GitHub account name”</li>
 <li>git config –global user.email “GitHubEmail@something.com”</li>
 </ul></li>
-<li>See <a href="https://happygitwithr.com/connect-intro.html">here</a> for a much more detailed walk-through of other approaches if you’re interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow.</li>
-</ul></li>
+<li><p>See <a href="https://happygitwithr.com/connect-intro.html">here</a> for a much more detailed walk-through of other approaches if you’re interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow.</p></li>
 <li><p>It’s a good idea to have a basic familiarity with the terminology of Git and GitHub before you really dive in. For example, you should know what “pull”, “commit”, “push”, and “branch” mean in the context of a GitHub repo. See:</p>
 <ul>
 <li><p><a href="https://github.com/git-guides">Here</a> for the GitHub documentation, including separate pages for <a href="https://github.com/git-guides/git-commit">commits</a>, <a href="https://github.com/git-guides/git-pull">pulling</a>, and <a href="https://github.com/git-guides/git-push">pushing</a>. Note that while these pages assume you’ll be working with Git in the command line, rather than RStudio, the general descriptions still apply.</p></li>
@@ -273,10 +280,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -286,8 +292,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -300,6 +315,81 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -343,6 +433,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -428,6 +519,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
