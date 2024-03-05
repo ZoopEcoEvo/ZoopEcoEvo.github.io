@@ -18,20 +18,20 @@ As you can probably already tell, the workflow also relies on Git and GitHub to 
 
 This workflow tends to "just work" once everything is set up and you get familiar with it. However, there's a fair amount of stuff to work out before you get to that point. Luckily, these are generally one-time investments (per machine, that is).
 
--   You should already be added to the [GitHub organization](https://github.com/ZoopEcoEvo) as a member, but if not, remind me.
+-   If you don't already have a GitHub account, set one up. Once that's done, let Matt know and he'll add you to the [GitHub organization](https://github.com/ZoopEcoEvo) as a member.
 
--   Install [R and RStudio](https://posit.co/download/rstudio-desktop/).
+-   Install [R and RStudio](https://posit.co/download/rstudio-desktop/) if you haven't already.
 
 -   Make sure you have [git](https://git-scm.com) installed on your local machine by this point. There are some helpful instructions [here](https://happygitwithr.com/install-git.html) if needed.
 
 -   Make sure you've got the connections between Git, GitHub, and RStudio worked out. When you first set things up, you'll need to give RStudio 'permission' to integrate with your GitHub. There are two steps here:
 
-    -   Go to <https://github.com/settings/tokens> and hit \"Generate token\". You can choose the scope of access you want to grant. For our purposes, you should be fine so long as "repo", "user", and "workflow" are selected. **Copy the token when it's generated.** You could also leave this window open until you've finished the set up, just to be safe. Head back to RStudio, and install the 'gitcreds' package. Once installed, call gitcreds::gitcreds_set(). When you run this function, it will prompt you to enter your token.
+    -   Go to <https://github.com/settings/tokens> and hit "Generate token". You can choose the scope of access you want to grant. For our purposes, you should be fine so long as "repo", "user", and "workflow" are selected. **Copy the token when it's generated.** You could also leave this window open until you've finished the set up, just to be safe. Head back to RStudio, and install the 'gitcreds' package using `install.packages("gitcreds")`. Once installed, call gitcreds::gitcreds_set(). When you run this function, it will prompt you to enter your token.
 
 -   Once you've granted RStudio access to your GitHub, you should make sure that your local version of Git has your account information. Open your command line (either via terminal or through the terminal window in RStudio). Input the following two lines of code, replacing the account info as needed
 
-    -   git config --global user.name "your GitHub account name"
-    -   git config --global user.email "GitHubEmail\@something.com"
+    -   git config --global user.name "your_GitHub_account_name"
+    -   git config --global user.email "your.email\@something.com"
 
 -   See [here](https://happygitwithr.com/connect-intro.html) for a much more detailed walk-through of other approaches if you're interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow.
 

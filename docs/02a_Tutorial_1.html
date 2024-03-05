@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,11 +94,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -101,9 +138,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./Figures/copepod_icon_dark.png" alt="" class="navbar-logo">
     </a>
@@ -118,47 +155,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Intro</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_git_and_R.html" rel="" target="">
- <span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
+    <a class="nav-link" href="./01_git_and_R.html"> 
+<span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./02_coding.html" rel="" target="" aria-current="page">
- <span class="menu-text">Coding in R</span></a>
+    <a class="nav-link active" href="./02_coding.html" aria-current="page"> 
+<span class="menu-text">Coding in R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./03_project_dev.html" rel="" target="">
- <span class="menu-text">Project Development</span></a>
+    <a class="nav-link" href="./03_project_dev.html"> 
+<span class="menu-text">Project Development</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02a_Tutorial_1.html">Part 1 - R Basics</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02a_Tutorial_1.html">Part 1 - R Basics</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -206,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -251,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/02a_Tutorial_1.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/02a_Tutorial_1.Rmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -271,7 +308,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="introduction-to-the-r-environment-syntax" class="level1">
 <h1>Introduction to the R Environment &amp; Syntax</h1>
@@ -358,7 +397,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <p>R’s main functionality is the manipulation of data. But before we can get into processing and analyzing data, we need to go over how data is structured in the R environment. Different types of data objects have their own set of unique properties, characteristics, and structures which are fundamental to their manipulation in R. Herein lies a major source of frustration for novice and experienced R users alike.</p>
 <section id="variable-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="variable-assignment">Variable Assignment</h2>
-<p>We’ve already mentioned that assignment stores information in R by giving a name to a value (or object). This is true for any of the data structures we’ll talk about. You can assign information in two main ways, with ‘=’ or with ‘&lt;-’. In general, these are equivalent methods of assignment. Try assigning a variable using both methods.</p>
+<p>We’ve already mentioned that assignment stores information in R by giving a name to a value (or object). This is true for any of the data structures we’ll talk about. You can assign information in two main ways, with ‘=’ or with ‘&lt;-’. In general, these are equivalent methods of assignment. You can read more about why we assign variables in these ways <a href="https://www.r-bloggers.com/2018/09/why-do-we-use-arrow-as-an-assignment-operator/">here</a>. Try assigning a variable using both methods.</p>
 <p>Note that ‘x -&gt; 1’ is not the same thing as ‘x &lt;- 1’.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
@@ -506,7 +545,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 </div>
 <p>Other functions output more complex results. The range( ) function returns two numbers at the same time, the maximum and the minimum values. This presents a new challenge. If you wanted to use these numbers for further analysis, you will need to be able to isolate them or specify which you want to use. This is where understanding the structure of the data object becomes important.</p>
 <p>Assign the range of ‘z’ to a variable. Print that variable. What do you see? Using str( ) will return a compact summary of the structure of an object. Use str( ) to examine both z and your new variable. Don’t forget that your variable name should be both concise and informative!</p>
-<p>As you’ll see, both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using ‘[ ]’, and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.</p>
+<p>As you’ll see, both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using ‘<span class="math display">\[  \]</span>’, and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 1 2 3</span></span>
@@ -777,7 +816,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <p>Now that we’ve covered common data structures, it’s time to re-visit subsetting. Data sets can be quite large in R, and being able to efficiently and accurately pull out particular records or observations is critical for many analyses. Since data sets are rarely sorted in a way to makes this easily accomplished manually, you will have to rely on subsetting. The syntax of subsetting can be tricky to wrap your head around, but just keep the <strong>structure</strong> of the data in mind.</p>
 <section id="positional-subsetting" class="level3">
 <h3 class="anchored" data-anchor-id="positional-subsetting">Positional Subsetting</h3>
-<p>We already worked with subsetting vectors. These one-dimensional structures are subset by specifying the specific position of values you want. Matrices and data frames can be subset in a similar way, but now you’re dealing with two-dimensional structures. You need to specify both a row and a column (in that order) to locate a specific value, again using [ ] to contain this position information.</p>
+<p>We already worked with subsetting vectors. These one-dimensional structures are subset by specifying the specific position of values you want. Matrices and data frames can be subset in a similar way, but now you’re dealing with two-dimensional structures. You need to specify both a row and a column (in that order) to locate a specific value, again using <span class="math display">\[  \]</span> to contain this position information.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This time we add a little data when we create the matrix</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dat_matrix <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">8</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">8</span><span class="sc">*</span><span class="dv">4</span>))</span>
@@ -994,7 +1033,7 @@ RStudio can be downloaded <a href="https://rstudio.com/products/rstudio/"><stron
 <span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>dat_matrix[dat_matrix[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="dv">1</span>] <span class="co">#Subsets the matrix based on this condition, returning values from column 1 that are greater than 3</span></span>
 <span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4 5 6 7 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s break that syntax down. Remember, subsetting matrices requires identifying positions based on rows and columns. In the above expression, you’re using the logical statement ‘dat_matrix[,1] &gt; 3’ instead of specifying row numbers: The positions in the first column that satisfy the logical statement are used as a substitute for row numbers. As your data sets get more complex, logical subsetting becomes more and more useful, as it allows you to subset without needing to know the exact positions of the desired data.</p>
+<p>Let’s break that syntax down. Remember, subsetting matrices requires identifying positions based on rows and columns. In the above expression, you’re using the logical statement ‘dat_matrix<span class="math display">\[,1\]</span> &gt; 3’ instead of specifying row numbers: The positions in the first column that satisfy the logical statement are used as a substitute for row numbers. As your data sets get more complex, logical subsetting becomes more and more useful, as it allows you to subset without needing to know the exact positions of the desired data.</p>
 <p><strong>Check Point</strong>: What type of data structure is produced by the subsets we’ve shown so far?</p>
 <p>The final utility of logical subsets we’ll cover for matrices is creating a new matrix by selecting entire rows or columns in an existing matrix. We’ve already talked about how to call an entire row or column in a matrix (just leave out the column or row position, respectively). We can combine this syntax with a logical subset to pull entire rows or columns that fulfill the logical statement.</p>
 <div class="cell">
@@ -1220,10 +1259,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1233,8 +1271,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1247,6 +1294,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1290,6 +1456,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1315,6 +1482,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1378,4 +1571,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/02a_Tutorial_1.Rmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

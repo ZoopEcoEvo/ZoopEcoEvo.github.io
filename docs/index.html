@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.288">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -45,12 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -59,6 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -73,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
@@ -90,25 +92,25 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Intro</span></a>
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_git_and_R.html" rel="" target="">
- <span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
+    <a class="nav-link" href="./01_git_and_R.html"> 
+<span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./02_coding.html" rel="" target="">
- <span class="menu-text">Coding in R</span></a>
+    <a class="nav-link" href="./02_coding.html"> 
+<span class="menu-text">Coding in R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./03_project_dev.html" rel="" target="">
- <span class="menu-text">Project Development</span></a>
+    <a class="nav-link" href="./03_project_dev.html"> 
+<span class="menu-text">Project Development</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -153,6 +155,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+
 <p>In general, operating in academia means projects will be geared towards eventual publication. Our goal is not just to share results, however, but to help people understand the analyses we did. All publications from our group will therefore include some way of accessing the associated data and scripts. However, this still gets us only partway towards our goal of <strong>replicable</strong> and <strong>understandable</strong> analyses. Project materials need to be well organized and thoroughly documented (not just “accessible”) in order for other people to follow what was done. This will also help other lab members, if at some point someone wants to follow up on your project, expand the scope of data you collected, or apply similar analyses to their data sets. This goal of making your work accessible, replicable, and understandable shapes the workflow I will ask you to use.</p>
 <section id="project-folders" class="level1">
 <h1>Project Folders</h1>
@@ -167,17 +170,17 @@ ul.task-list li input[type="checkbox"] {
 <h1>Initial Setup</h1>
 <p>This workflow tends to “just work” once everything is set up and you get familiar with it. However, there’s a fair amount of stuff to work out before you get to that point. Luckily, these are generally one-time investments (per machine, that is).</p>
 <ul>
-<li><p>You should already be added to the <a href="https://github.com/ZoopEcoEvo">GitHub organization</a> as a member, but if not, remind me.</p></li>
-<li><p>Install <a href="https://posit.co/download/rstudio-desktop/">R and RStudio</a>.</p></li>
+<li><p>If you don’t already have a GitHub account, set one up. Once that’s done, let Matt know and he’ll add you to the <a href="https://github.com/ZoopEcoEvo">GitHub organization</a> as a member.</p></li>
+<li><p>Install <a href="https://posit.co/download/rstudio-desktop/">R and RStudio</a> if you haven’t already.</p></li>
 <li><p>Make sure you have <a href="https://git-scm.com">git</a> installed on your local machine by this point. There are some helpful instructions <a href="https://happygitwithr.com/install-git.html">here</a> if needed.</p></li>
 <li><p>Make sure you’ve got the connections between Git, GitHub, and RStudio worked out. When you first set things up, you’ll need to give RStudio ‘permission’ to integrate with your GitHub. There are two steps here:</p>
 <ul>
-<li>Go to&nbsp;<a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a> and hit "Generate token". You can choose the scope of access you want to grant. For our purposes, you should be fine so long as “repo”, “user”, and “workflow” are selected. <strong>Copy the token when it’s generated.</strong> You could also leave this window open until you’ve finished the set up, just to be safe. Head back to RStudio, and install the ‘gitcreds’ package. Once installed, call gitcreds::gitcreds_set(). When you run this function, it will prompt you to enter your token.</li>
+<li>Go to&nbsp;<a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a> and hit “Generate token”. You can choose the scope of access you want to grant. For our purposes, you should be fine so long as “repo”, “user”, and “workflow” are selected. <strong>Copy the token when it’s generated.</strong> You could also leave this window open until you’ve finished the set up, just to be safe. Head back to RStudio, and install the ‘gitcreds’ package using <code>install.packages("gitcreds")</code>. Once installed, call gitcreds::gitcreds_set(). When you run this function, it will prompt you to enter your token.</li>
 </ul></li>
 <li><p>Once you’ve granted RStudio access to your GitHub, you should make sure that your local version of Git has your account information. Open your command line (either via terminal or through the terminal window in RStudio). Input the following two lines of code, replacing the account info as needed</p>
 <ul>
-<li>git config –global user.name “your GitHub account name”</li>
-<li>git config –global user.email “GitHubEmail@something.com”</li>
+<li>git config –global user.name “your_GitHub_account_name”</li>
+<li>git config –global user.email “your.email@something.com”</li>
 </ul></li>
 <li><p>See <a href="https://happygitwithr.com/connect-intro.html">here</a> for a much more detailed walk-through of other approaches if you’re interested. We will generally use HTTPS when working with GitHub in RStudio, so this additional information is not needed for our workflow.</p></li>
 <li><p>It’s a good idea to have a basic familiarity with the terminology of Git and GitHub before you really dive in. For example, you should know what “pull”, “commit”, “push”, and “branch” mean in the context of a GitHub repo. See:</p>
@@ -329,15 +332,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -346,7 +362,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -388,6 +412,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -459,6 +506,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -523,4 +596,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -57,9 +57,7 @@ ggpubr::ggarrange(plot_a, plot_b,
 
 The other useful thing the report.Rmd file will do is automatically export image files (in .pdf and .png formats) to the Output/Figures/ directory. This makes it easier to pull up-to-date figures for presentations, progress reports, and the manuscript draft. The last use is especially important - being able to include figures in the manuscript from files instead of having to run code each time you knit the document will save you **a lot** of time.
 
-You should feel free to duplicate the report.Rmd file - making a separate report for different purposes, for example. This will allow extra flexibility with the content, format, and output. Another particularly useful 'version' of the markdown file is a digital lab notebook. You can use this modified version of the report to keep track of things you've tried. And since it's an R markdown file, you can include the snippets of code that you're working with. While Git/GitHub will provide robust version control, sometimes a visual log like this is really useful and can help you from going in circles.
-
-If you do decide to create a digital lab notebook like this, however, be sure to use unique chunk labels when plotting figures (figure names are inherited from chunk labels), otherwise you'll overwrite the figures from your other reports! You could also prevent the digital lab notebook from saving image files by changing the chunk options (see the code chunk below).
+You should feel free to duplicate the report.Rmd file - making a separate report for different purposes, for example. This will allow extra flexibility with the content, format, and output. If you do generate multiple reports, be sure to update the file path you send figures to, otherwise you'll overwrite the figures from your other reports! You could also prevent a report from saving image files by changing the chunk options (see the code chunk below).
 
 ```{r}
 #| code-fold: true
@@ -69,7 +67,7 @@ If you do decide to create a digital lab notebook like this, however, be sure to
 knitr::opts_chunk$set(
   echo = knitr::is_html_output(),
   fig.align = "center",
-  fig.path = "../Figures/markdown/", #Remove this line and...
+  fig.path = "../Figures/markdown/", # Update this for each report - OR - Remove this line and...
   dev = c("png", "pdf"), # ...this line to prevent the figures from being saved
   message = FALSE,
   warning = FALSE,

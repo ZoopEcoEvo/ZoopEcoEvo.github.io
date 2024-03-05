@@ -96,7 +96,7 @@ A comprehensive repository is less useful for variables and object names, as eve
 
 First, develop a standard naming structure for your variables. Names should be both concise and descriptive. For instance, instead of using "variable" you would probably be better off using something like "pH_levels", "species_ID", "body_size", etc. when storing data. Each of these names is relatively short, but still tells you about what's being stored. Also note that each of these variable names is (generally) lowercase, with and underscore separating words. Hyphens are also commonly used when naming variables ("pH-levels", "species-ID", "body-size"). Some people prefer to separate words using cases ("pHLevels", "SpeciesID", "BodySize"), but the examples here illustrate why I don't recommend that strategy.
 
-The same recommendations apply in more complex situations. Imagine you're creating a model describing the relationship between two variables, X and Y, and want to store the model. Assigning it to a variable called 'model_describing_the_relationship_between_X\_and_Y' is very descriptive, but way too long. A variable called 'model' is short, but not descriptive. Variables like 'X_Y.model' are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use 'X_Y.model' in one script, use 'A_B.model' rather than 'AB_model' for the next model. These stylistic conventions are usually based on personal preference, but should be something you make conscious decisions about. It can be useful when you're first starting to include these stylistic conventions in your dictionary.
+The same recommendations apply in more complex situations. Imagine you're creating a model describing the relationship between two variables, X and Y, and want to store the model. Assigning it to a variable called 'model_describing_the_relationship_between_X_and_Y' is very descriptive, but way too long. A variable called 'model' is short, but not descriptive. Variables like 'X_Y.model' are typically a good compromise. However you decide to name variables, be consistent for different types of objects across your scripts. If you use 'X_Y.model' in one script, use 'A_B.model' rather than 'AB_model' for the next model. These stylistic conventions are usually based on personal preference, but should be something you make conscious decisions about. It can be useful when you're first starting to include these stylistic conventions in your dictionary.
 
 In addition to being concise and descriptive, it's also important that variable names be relatively unique: You want to avoid using the same variable name across many different scripts. For example, using a variable called "data" to store your data in all of your scripts is an easy way to get your analyses tangled up, especially if you're jumping between different R scripts in the same session. **Values assigned to variable names are not stored in your script, but in the environment**. So, if you assign something to 'X_data' in one script, it will carry that over into any other script you open during that session. Likewise, if you re-assign 'X_data' in the second script and then go back to the first script, 'X_data' won't change back.
 
@@ -114,7 +114,7 @@ R's main functionality is the manipulation of data. But before we can get into p
 
 ## Variable Assignment
 
-We've already mentioned that assignment stores information in R by giving a name to a value (or object). This is true for any of the data structures we'll talk about. You can assign information in two main ways, with '=' or with '\<-'. In general, these are equivalent methods of assignment. Try assigning a variable using both methods.
+We've already mentioned that assignment stores information in R by giving a name to a value (or object). This is true for any of the data structures we'll talk about. You can assign information in two main ways, with '=' or with '\<-'. In general, these are equivalent methods of assignment. You can read more about why we assign variables in these ways [here](https://www.r-bloggers.com/2018/09/why-do-we-use-arrow-as-an-assignment-operator/). Try assigning a variable using both methods.
 
 Note that 'x -\> 1' is not the same thing as 'x \<- 1'.
 
@@ -260,7 +260,7 @@ Other functions output more complex results. The range( ) function returns two n
 
 Assign the range of 'z' to a variable. Print that variable. What do you see? Using str( ) will return a compact summary of the structure of an object. Use str( ) to examine both z and your new variable. Don't forget that your variable name should be both concise and informative!
 
-As you'll see, both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using '\[ \]', and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.
+As you'll see, both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using '$$  $$', and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.
 
 ```{r collapse=TRUE}
 print(z)
@@ -490,7 +490,7 @@ Now that we've covered common data structures, it's time to re-visit subsetting.
 
 ### Positional Subsetting
 
-We already worked with subsetting vectors. These one-dimensional structures are subset by specifying the specific position of values you want. Matrices and data frames can be subset in a similar way, but now you're dealing with two-dimensional structures. You need to specify both a row and a column (in that order) to locate a specific value, again using \[ \] to contain this position information.
+We already worked with subsetting vectors. These one-dimensional structures are subset by specifying the specific position of values you want. Matrices and data frames can be subset in a similar way, but now you're dealing with two-dimensional structures. You need to specify both a row and a column (in that order) to locate a specific value, again using $$  $$ to contain this position information.
 
 ```{r}
 #This time we add a little data when we create the matrix
@@ -602,7 +602,7 @@ dat_matrix > 3 #Which values in the matrix are greater than 3?
 dat_matrix[dat_matrix[,1] > 3, 1] #Subsets the matrix based on this condition, returning values from column 1 that are greater than 3
 ```
 
-Let's break that syntax down. Remember, subsetting matrices requires identifying positions based on rows and columns. In the above expression, you're using the logical statement 'dat_matrix\[,1\] \> 3' instead of specifying row numbers: The positions in the first column that satisfy the logical statement are used as a substitute for row numbers. As your data sets get more complex, logical subsetting becomes more and more useful, as it allows you to subset without needing to know the exact positions of the desired data.
+Let's break that syntax down. Remember, subsetting matrices requires identifying positions based on rows and columns. In the above expression, you're using the logical statement 'dat_matrix$$,1$$ \> 3' instead of specifying row numbers: The positions in the first column that satisfy the logical statement are used as a substitute for row numbers. As your data sets get more complex, logical subsetting becomes more and more useful, as it allows you to subset without needing to know the exact positions of the desired data.
 
 **Check Point**: What type of data structure is produced by the subsets we've shown so far?
 

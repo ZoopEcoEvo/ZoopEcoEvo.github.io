@@ -70,6 +70,6 @@ Below is a general outline of the main steps you might take when sitting down at
 
 1.  Open your R Project via the .Rproj file.
 2.  Pull code from the virtual working branch to make sure it's up-to-date.
-    -   If multiple people are working on the same project, pull from the working branch as well.
+    -   If multiple people are working on the same project, pull from the main branch as well.
 3.  Work on the code. Commit along the way.
 4.  Before wrapping up, pull one last time, then push your commits to your working branch on the repo.
