@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -45,7 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,8 +60,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -67,9 +75,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./Figures/copepod_icon_dark.png" alt="" class="navbar-logo">
     </a>
@@ -77,101 +85,115 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Project Workflow</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
- <span class="menu-text">Intro</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Intro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_git_and_R.html">
- <span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
+    <a class="nav-link" href="./01_git_and_R.html"> 
+<span class="menu-text">Git, GitHub, R Projects, and RStudio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./02_coding.html">
- <span class="menu-text">Coding in R</span></a>
+    <a class="nav-link" href="./02_coding.html"> 
+<span class="menu-text">Coding in R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./03_project_dev.html" aria-current="page">
- <span class="menu-text">Project Development</span></a>
+    <a class="nav-link active" href="./03_project_dev.html" aria-current="page"> 
+<span class="menu-text">Project Development</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">What happens outside of the project folder?</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03e_other_workflow.html">Working Outside the Project Folder</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_project_dev.html" class="sidebar-item-text sidebar-link">Project Development</a>
+  <a href="./03_project_dev.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Development</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03a_data_analysis.html" class="sidebar-item-text sidebar-link">Data Analysis</a>
+  <a href="./03a_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03b_pull_requests.html" class="sidebar-item-text sidebar-link">Pull Requests</a>
+  <a href="./03b_pull_requests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pull Requests</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03c_reports.html" class="sidebar-item-text sidebar-link">Project Reports</a>
+  <a href="./03c_reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Reports</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03d_manuscripts.html" class="sidebar-item-text sidebar-link">Manuscript Prep</a>
+  <a href="./03d_manuscripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuscript Prep</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03e_other_workflow.html" class="sidebar-item-text sidebar-link active">Working Outside the Project Folder</a>
+  <a href="./03e_other_workflow.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Working Outside the Project Folder</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#work-flow-priorities" id="toc-work-flow-priorities" class="nav-link active" data-scroll-target="#work-flow-priorities">Work flow priorities</a></li>
+  <li><a href="#work-flow-priorities" id="toc-work-flow-priorities" class="nav-link active" data-scroll-target="#work-flow-priorities">Work flow priorities</a>
+  <ul class="collapse">
+  <li><a href="#final-words" id="toc-final-words" class="nav-link" data-scroll-target="#final-words">Final Words</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/03e_other_workflow.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/03e_other_workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">What happens outside of the project folder?</h1>
+<h1 class="title">What happens outside of the project folder?</h1>
 </div>
 
 
@@ -184,29 +206,33 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<p>So far, we’ve focused on how the Project Folder is set up to help you go from data to final product. However, there’s a lot of work that goes into a project <strong>before</strong> you have any data. In particular, you will need to have a thorough grasp of the published literature, a well-organized plan for data collection and management, and some way to keep track of what you’ve done. The project folder can help with some aspects of this. For example, funded grant applications, relevant protocols and data management plans, naming conventions, etc. can all be kept together with a project in the Background directory. I’ve found, however, that doing some of this work outside the project folder allows you to access a more centralized network of systems that can provide richer, more robust insights.</p>
-<p>I’ve outlined my workflow in schematic form here, and describe some of the key tenets below. Before going any further, know that the workflow described is going to be highly individual - this is something that I’ve found works for me. You might benefit from something similar, or something completely different. Explore the (many) options out there!</p>
+
+<p>So far, we’ve focused on how the Project Folder is set up to help you go from data to final product. There’s a lot of work, however, that has to happen outside of this set-up. While things like funded grant applications, relevant protocols and data management plans, naming conventions, etc. can all be kept together with a project in the Background directory, there are other aspects (literature, lab notebooks, etc.) that can be relevant across multiple projects. In reality, you will need to develop a network of interconnected workflows to see a project from start to finish.</p>
+<p>As an example, I’ve outlined my workflow in schematic form here, and describe some of the key tenets below. Before going any further, know that these workflows are highly individual. What I describe is something that I’ve found works for me; you might benefit from something similar, or something completely different. Explore the (many) options out there!</p>
 <p><img src="Figures/other_workflow_elements.jpg" class="img-fluid"></p>
 <section id="work-flow-priorities" class="level1">
 <h1>Work flow priorities</h1>
-<p>A major part of research is reading literature. For better or worse, each day sees a flood of new papers published across any number of scientific journals. This is where the day-to-day workflow starts for me. You need some system for capturing, sorting, organizing, and annotating these papers. Ideally, your system will also help you to make connections between key points gleaned from these papers. Each of those steps (capturing, sorting, organizing, annotating, and synthesizing) are the focus of myriad programs, tools, approaches, and philosophies.</p>
-<p>Before you dive into everything that’s out there, though, spend some time thinking about how you work, and what elements would actually help you get stuff done. Do you want something that is simple and streamlined? Or do you like things with all the bells and whistles, that allows you to customize things to your liking? How much time per day do you intend on spending on each of these steps? Be realistic here - there’s no point in setting up a system that requires a little time each day to work if you know you’d prefer to spend more time at less frequent intervals.</p>
+<p>A major part of research is reading literature. For better or worse, each day sees a flood of new papers published across any number of scientific journals. This is where the day-to-day workflow starts for me. You need some system for capturing, sorting, organizing, and annotating these papers. Ideally, your system will also help you recall information (or at least be able to find it again when you go looking for it) and make connections between key points gleaned from different papers. Each of those steps (capturing, sorting, organizing, annotating, and synthesizing) are the focus of myriad programs, tools, approaches, and philosophies. Before you dive into everything that’s out there, spend some time thinking about how you work, and what elements would actually help you get stuff done. Do you want something that is simple and streamlined? Or do you like things with lots of bells and whistles that you can customize things to your liking? How much time per day do you intend on spending on each of these steps? Be realistic here - there’s no point in setting up a system that requires a little time each day to work if you know you’d prefer to spend more time at less frequent intervals.</p>
 <p>My personal workflow emphasizes five things:</p>
-<p><strong>Quick capture</strong> - I need to be able to quickly flag a paper, data set, protocol, news article, etc. when I see it. The key here is being able to grab anything and everything I see that might be relevant to past, present, or future work. I rely on a combination of Google Scholar and Web of Science alerts for general topics of interest, authors, and citations to certain key papers; social media; and more targeted, project-specific literature searches to collect (potentially) relevant papers. <a href="https://www.researchrabbit.ai">ResearchRabbit</a> is also worth playing around with - while it’s still a fairly new tool, it seems to be a nice complement (although not replacement) for traditional search tools.</p>
-<p>Because I’m prioritizing speed of capture, all of these resources are sent to a single ‘inbox’. I use a page in <a href="https://www.notion.so/desktop">Notion</a> for this, since there’s a nice web clipper tool for this app that I can use on both my phone and computer. Once or twice a week, I’ll sit down and sort through the inbox. Not everything ends up being relevant or useful, but since it’s quick and easy to capture things, I don’t mind having to screen extra stuff in order to be more confident that I’m not missing important papers.</p>
-<p><strong>A robust centralized organization</strong> - After collecting all these resources, I need a robust system to organize everything. I’ll eventually have to find them when they’re needed. This can be especially tricky with resources that are relevant (or might be relevant) for future projects. I also prefer that these systems be ‘centralized’ (i.e.&nbsp;- one collection of resources accessed for multiple projects, rather than an individual, independent collection for each project). This helps me cut down on redundancy when a resource might be relevant to more than one project.</p>
-<p>When sorting through the inbox, non-paper resources (data sets, tutorials, etc.) are screened out and organized in a series of topic-based pages in Notion. There’s also a separate page where I keep track of preprints that look promising but haven’t been published yet. This leaves published papers, which are screened for relevance, utility, interest, etc.</p>
-<p>Papers I want to store for later use are sent to <a href="https://www.zotero.org">Zotero</a>, again using a helpful web clipper tool. I prefer Zotero over some of the other major reference managers because it’s open source and developed by a non-profit organization. Once a paper is in my Zotero library, I’ll assign it to one or more folders for specific topics or projects. This strategy seems to hit the right balance for me between project-level organization of papers and keeping things centralized.</p>
-<p><strong>Easy annotation</strong> - I know that I am really vulnerable to the <a href="https://zettelkasten.de/posts/collectors-fallacy/">collector’s fallacy</a> (the notion that gathering information is the same as learning the information). I also know that I’m less likely to read something in a timely manner with more complex workflows. That being said, I want the effort that goes into reading a paper to “pay off”; specifically, I want be able to easily find the notes that I took when I return to a paper, rather than having to re-read the entire thing over again. I lose handwritten notes too easily, and I get too distracted by one long word document / excel file of notes. My solution is to keep notes and annotations stored alongside the PDFs of the papers. Zotero (version 6 and onward) includes an excellent PDF reader that I use to read and annotate papers. The notes you take on the PDF can be quickly pulled into Zotero as a note attached to the reference entry. This keeps the bibliographic information, PDF, and notes all together in the same place.</p>
-<p><strong>Making connections across resources</strong> - Some of the most interesting ideas stem from connections between two seemingly unrelated topics. I like my workflow to not only allow for those types of connections, but to promote them. I pull heavily from the <a href="https://zettelkasten.de/posts/overview/">Zettelkasten</a> method to make notes on what I read. I encourage you to explore this method a bit if you’re interested in thinking about how you take notes.</p>
-<p>Regardless of the method used to take notes, you will need to keep the notes you take organized. Much like how RStudio helps you work in R, Obsidian is a text editing environment that helps you work with markdown text files, which I use to collect and organize my notes. This is aided by a nice integration between Zotero and Obsidian that pulls the annotation notes into markdown files. Because all notes for all projects are kept in the same place, it’s easier to see patterns and make connections, often across project/topic boundaries.</p>
-<p>I also use Obsidian as a digital lab notebook. The ability to use templates makes things like setting up experiments, recording the health of cultures, and keeping track of daily activities a little easier. And because it uses markdown files, you don’t have to worry about not being able to access data across systems.</p>
+<p><strong>Quick capture</strong> - I need to be able to quickly flag a paper, data set, protocol, news article, etc. when I see it. The key here is being able to grab anything and everything I see that might be relevant to past, present, or future work. I rely on a combination of Google Scholar and Web of Science alerts for general topics of interest, authors, and citations to certain key papers; social media; and more targeted, project-specific literature searches to collect (potentially) relevant papers. In addition to Google Scholar and Web of Science, <a href="https://openalex.org/">OpenAlex</a> is a great resource. <a href="https://www.researchrabbit.ai">ResearchRabbit</a> and other tools like it might also be worth exploring. My general impression of these “AI powered” tools, however, is that they are by no means a replacement for traditional search strategies. By all means, though, change my mind.</p>
+<p>When I come across something interesting, I send it to a single ‘inbox’ in my Obsidian vault (using <a href="https://obsidian.md/clipper">this great web clipper tool</a>). Remember my priority here is speed of capture, so I don’t worry too much about judging utility, relevant, or value on the spot. Once or twice a week, I’ll sit down and sort through the inbox. Not everything ends up being relevant or useful, but I don’t mind having to screen extra stuff in order to be more confident that I’m not missing important papers or resources.</p>
+<p><strong>A robust centralized organization</strong> - After collecting all these resources, I need a robust system to organize everything. I’ll eventually have to find them when they’re needed. This is easy when somethign relates to a project I’m currently working on, but can be tricky when something is relevant (or might become relevant) for future projects. I also prefer that these systems be ‘centralized’ (i.e.&nbsp;- one collection of resources accessed for multiple projects, rather than an individual, independent collection for each project).</p>
+<p>When sorting through the inbox, non-paper resources (data sets, tutorials, pedagogical resources, etc.) are screened out and organized by topic in a series of notes in Obsidian. I also screen out preprints to keep track of that look promising but haven’t been published yet. This leaves published papers, which are screened for relevance, utility, interest, etc.</p>
+<p>Papers I want to store for later use are sent to <a href="https://www.zotero.org">Zotero</a>, again using a helpful web clipper tool. I prefer Zotero over some of the other major reference managers because it’s open source and developed by a non-profit organization. Once a paper is in my Zotero library, I’ll tag it with relevant topics and in some cases add a note to the entry with more specifics about how I envision using this reference. Zotero lets you create ‘Saved Searches’, which are essentially folders that update when new, relevant entries are added - I use these to maintain collections on general topics of interest. This strategy seems to hit the right balance for me between project-level organization of papers (being able to find it based on the topics tagged) and keeping things centralized (I only ever have one copy of a paper in my library).</p>
+<p><strong>Easy annotation</strong> - I know that I am really vulnerable to the <a href="https://zettelkasten.de/posts/collectors-fallacy/">collector’s fallacy</a> (the notion that gathering information is the same as learning the information). I also know that I’m less likely to read something in a timely manner with more complex workflows. That being said, I want the effort that goes into reading a paper to “pay off”; specifically, I want be able to easily find the notes that I took when I return to a paper, rather than having to re-read the entire thing over again. I lose handwritten notes too easily, and I get too distracted by one long word document / excel file of notes. My solution is to keep notes and annotations stored alongside the PDFs of the papers. Zotero (version 6 and onward) includes an excellent PDF reader that I use to read and annotate papers. Most importantly for me, notes and annotations from Zotero can be quickly pulled into Obsidian, creating a single note for each paper. I add a brief summary of key aspects of the paper (the aim, methods, results, synthesis of the paper, along with a ‘how am I going to use this’ section) to these notes. This keeps the bibliographic information and notes all together in the same place, while also making sure that information is easy to link to multiple projects.</p>
+<p><strong>Making connections across resources</strong> - Some of the most interesting ideas stem from connections between two seemingly unrelated topics. Regardless of the method used to take notes, you will need to keep the notes you take organized. Much like how RStudio and the project folder helps you work in R, Obsidian is a text editing environment that helps you work with markdown text files. Because all notes for all projects are kept in the same place, it’s easier to see patterns and make connections, often across project/topic boundaries.</p>
+<p>As discussed elsewhere, I also use Obsidian as a digital lab notebook (and require you to do the same). The ability to use templates makes things like setting up experiments, recording the health of cultures, and keeping track of daily activities a little easier. And because it uses markdown files, you don’t have to worry about not being able to access data across systems.</p>
 <p><strong>Integration</strong> - There’s no single perfect app that does everything I want to aid my workflow. I also don’t want to be reliant on a bunch of different apps and software (I know I am too easily distracted by the grandeur of these complex workflows to get any actual work done with them). Over time I’ve settled on the workflow described here, which relies on just a couple, relatively streamlined programs that integrate nicely with each other. Additionally, while relying on centralized systems, there’s no barriers to the flow of information and insight from outside to inside the project folders. For me, this is the most important aspect; to be able to go from a broad, centralized network of resources to highly specific application in individual projects.</p>
-<p>Remember, the system I’ve outlined here is what works for me. Everyone works in different ways though. You can take the components (if any) that work for you and then explore your other options to fill in the gaps in your workflow. Keep in mind that this workflow is a major part of how you interface with the scientific world; Try to find something that helps you feel excited about the material you’re working with! This will probably be an iterative process. You might not land on something right away. But as you learn more (and learn more about how you learn best), the features and priorities of an ideal personal workflow will solidify.</p>
+<section id="final-words" class="level2">
+<h2 class="anchored" data-anchor-id="final-words">Final Words</h2>
+<p>Remember, the system I’ve outlined here is what works for me (or at least what worked for me as a late-stage postdoc in 2024). Everyone works in different ways though - you can take whichever components (if any) that work for you and then explore your other options to fill in the gaps in your workflow. Whether you are piecing together an initial workflow or refining what you’re already working with, my main piece of advice is think about <em>how</em> you work, not <em>what</em> you’re working with. The temptation to add whatever new and shiny software is popular at the time into your workflow will always be present. And sometimes this new software might be useful for you. But in order to keep making progress on your work (and it is the work that really matters, not the workflow), you’ll be best served by thinking carefully about your own personal workflow priorities.</p>
+<p>Your workflow is how you interface with the scientific world. Be honest with yourself about what you actually need in order to stay engaged with the literature, to develop your own ideas, and to eventually compile and share these ideas with others. Try to build a workflow that helps you feel excited about the material you’re working with! This will probably be an iterative process. You might not land on something right away. But as you learn more (and learn more about how you learn best), the features and priorities of an ideal personal workflow will solidify.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -237,9 +263,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -275,10 +315,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -288,8 +327,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -304,6 +352,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -347,4 +627,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/edit/main/03e_other_workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ZoopEcoEvo/ZoopEcoEvo.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
