@@ -260,7 +260,7 @@ Other functions output more complex results. The range( ) function returns two n
 
 Assign the range of 'z' to a variable. Print that variable. What do you see? Using str( ) will return a compact summary of the structure of an object. Use str( ) to examine both z and your new variable. Don't forget that your variable name should be both concise and informative!
 
-As you'll see, both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using '$$  $$', and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.
+As you'll see, both objects are vectors. Remember that because vectors are one-dimensional data objects (the structure is defined by a length), the values contained within them can be identified by their positions. Calling up specific values from a vector simply requires specifying the position of the value(s). This is done using `vector[position], and is the first example of a process called subsetting. This is one of the most useful skills in R, especially once we start dealing with larger, multi-dimensional data structures.
 
 ```{r collapse=TRUE}
 print(z)
